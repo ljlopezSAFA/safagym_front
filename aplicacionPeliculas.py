@@ -66,13 +66,19 @@ def peli_por_anio():
         tablanueva.insert('', 1, text="")
 
 
-
-
 def insertar_pelicula():
 
 
         peli_insert(posicionvar.get(),titulovar.get(),aniovar.get(),valvar.get())
 
+
+
+def peli_por_titulo():
+
+    varpeli= titulovar.get()
+    obtenertitulo= titulo_peli(varpeli)
+
+    print(obtenertitulo)
 
 
 #-----------------------------------MENÚ--------------------------------
@@ -130,7 +136,7 @@ entryVal.grid(row=3, column=1, columnspan=2)
 botonPosicion= Button(miFrame,text="OK", width=5, command= peli_por_posicion)
 botonPosicion.grid(row=0, column= 3,padx=10)
 
-botonTitulo= Button(miFrame,text="OK", width=5)
+botonTitulo= Button(miFrame,text="OK", width=5, command=peli_por_titulo)
 botonTitulo.grid(row=1, column= 3,padx=10)
 
 

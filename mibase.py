@@ -106,3 +106,16 @@ def peli_insert(posicionvar,titulovar,aniovar,valvar):
         print("Completa todos los campos correctamente")
 
 
+def titulo_peli(varpeli):
+
+    conexion_bbdd()
+
+    miCursor.execute("SELECT posicion,anio,valoraciones FROM peliculas WHERE titulo like '% "+ str(varpeli)+ "%'")
+
+    obtenertitulo= miCursor.fetchone()
+    miConexion.commit()
+
+    print(obtenertitulo)
+
+    return obtenertitulo
+

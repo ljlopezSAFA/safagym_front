@@ -110,12 +110,13 @@ def titulo_peli(varpeli):
 
     conexion_bbdd()
 
-    miCursor.execute("SELECT posicion,anio,valoraciones FROM peliculas WHERE titulo like '% "+ str(varpeli)+ "%'")
+    try:
+        miCursor.execute("SELECT posicion,anio,valoraciones FROM peliculas WHERE titulo like '%"+str(varpeli)+"%'")
 
-    obtenertitulo= miCursor.fetchone()
-    miConexion.commit()
+        obtenertitulo= miCursor.fetchone()
+        miConexion.commit()
 
-    print(obtenertitulo)
+        return obtenertitulo
 
-    return obtenertitulo
-
+    except TypeError:
+        print("Pelicula no encontrada")

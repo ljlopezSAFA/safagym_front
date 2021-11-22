@@ -78,7 +78,9 @@ def peli_por_titulo():
     varpeli= titulovar.get()
     obtenertitulo= titulo_peli(varpeli)
 
-    print(obtenertitulo)
+    posicionvar.set(obtenertitulo[0])
+    aniovar.set(obtenertitulo[1])
+    valvar.set(obtenertitulo[2])
 
 
 #-----------------------------------MENÚ--------------------------------

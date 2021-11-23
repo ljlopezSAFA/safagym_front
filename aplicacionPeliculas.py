@@ -3,6 +3,7 @@ from tkinter import *
 import mysql.connector
 from mibase import *
 from PIL import ImageTk, Image
+from tkinter import messagebox
 
 
 miRaiz = Tk()
@@ -10,7 +11,7 @@ miRaiz.title("TOP PELICULAS IMDB")
 miRaiz.iconbitmap("3d_movies_folder_20527.ico")
 miFrame = Frame(miRaiz)
 miFrame.pack()
-
+miRaiz.resizable(width=False, height=False)
 
 imagenfondo = ImageTk.PhotoImage(Image.open("fondoAplicacion.gif").resize((500,400)))
 labelfondo = Label(miFrame,image=imagenfondo)
@@ -30,9 +31,13 @@ def peli_por_posicion():
     mivar= posicionvar.get()
     prueba = posicion_peli(mivar)
 
-    titulovar.set(prueba[0])
-    aniovar.set(prueba[1])
-    valvar.set(prueba[2])
+    try:
+        titulovar.set(prueba[0])
+        aniovar.set(prueba[1])
+        valvar.set(prueba[2])
+    except TypeError:
+        messagebox.showerror(message="No se ha encontrado ninguna pelicula", title="Título en la posición "+ mivar)
+
 
 
 def peli_por_anio():
@@ -41,46 +46,81 @@ def peli_por_anio():
     obtenerAnio= anio_peli(aniovar.get())
 
 
-    ventanaSecundaria = Toplevel(width=400,height=400)
-    ventanaSecundaria.title("Pelicula en ese año")
+    if int(aniovar.get()) < 2022 and int(aniovar.get()) > 1919:
 
-    tablanueva = tkinter.ttk.Treeview(ventanaSecundaria, columns=('#0', '#1', '#2', '#3'))
-    tablanueva.grid(row=0, column=0)
+        ventanaSecundaria = Toplevel()
+        ventanaSecundaria.title("Pelicula en ese año")
+        ventanaSecundaria.resizable(False,False)
 
-    tablanueva.heading("#0", text="Posición")
-    tablanueva.heading("#1", text="Título")
-    tablanueva.heading("#2", text="Valoración")
-    tablanueva.heading("#3", text="Sinopsis")
+        tablanueva = tkinter.ttk.Treeview(ventanaSecundaria, columns=('#0', '#1', '#2', '#3'))
+        tablanueva.grid(row=0, column=0)
 
-    tablanueva.tag_configure('fuente', font=("Arial", 12, "bold"))
+        scrolluno = Scrollbar(ventanaSecundaria, command= tablanueva.yview)
+        scrolluno.grid(row=0, column=4, sticky="nsew")
+        tablanueva.config(yscrollcommand= scrolluno.set)
 
-    tablanueva.column('#0', anchor="center")
-    tablanueva.column('#1', anchor="center")
-    tablanueva.column('#2', anchor="center")
+        scrolldos = Scrollbar(ventanaSecundaria, command=tablanueva.xview, orient= HORIZONTAL)
+        scrolldos.grid(row=1, column=0,sticky="we")
+        tablanueva.config(xscrollcommand=scrolldos.set)
 
 
+        tablanueva.heading("#0", text="Posición")
+        tablanueva.heading("#1", text="Título")
+        tablanueva.heading("#2", text="Valoración")
+        tablanueva.heading("#3", text="Sinopsis")
 
-    for i in range(len(obtenerAnio)):
-        tablanueva.insert('', 0, tags='fuente', text=obtenerAnio[i][0],
-                          values=(obtenerAnio[i][1], obtenerAnio[i][2], obtenerAnio[i][3]))
-        tablanueva.insert('', 1, text="")
+
+        tablanueva.tag_configure('fuente', font=("Arial", 12, "bold"))
+
+        tablanueva.column('#0', anchor="center")
+        tablanueva.column('#1', anchor="center")
+        tablanueva.column('#2', anchor="center")
+        tablanueva.column('#3', width=500)
+        tablanueva.column('#4', width= 0)
+
+
+        for i in range(len(obtenerAnio)):
+            tablanueva.insert('', 0, tags='fuente', text=obtenerAnio[i][0],
+                              values=(obtenerAnio[i][1], obtenerAnio[i][2], obtenerAnio[i][3]))
+            tablanueva.insert('', 1, text="")
+
+
+    else:
+        messagebox.showerror(message="No se ha encontrado ninguna pelicula", title="Película de "+aniovar.get())
 
 
 def insertar_pelicula():
 
-
+    try:
         peli_insert(posicionvar.get(),titulovar.get(),aniovar.get(),valvar.get())
-
+        messagebox.showinfo(message="La película se ha insertado con éxito", title="Pelicula Insertada")
+    except mysql.connector.errors.IntegrityError:
+        messagebox.showerror(message="Introduce los datos correctamente", title="ERROR")
+    except mysql.connector.errors.DataError:
+        messagebox.showerror(message="Introduce los datos correctamente", title="ERROR")
 
 
 def peli_por_titulo():
 
     varpeli= titulovar.get()
-    obtenertitulo= titulo_peli(varpeli)
 
-    posicionvar.set(obtenertitulo[0])
-    aniovar.set(obtenertitulo[1])
-    valvar.set(obtenertitulo[2])
+    try:
+        obtenertitulo= titulo_peli(varpeli)
+
+        posicionvar.set(obtenertitulo[0])
+        aniovar.set(obtenertitulo[1])
+        valvar.set(obtenertitulo[2])
+
+    except:
+        messagebox.showerror(message="No se ha encontrado ninguna película", title="ERROR")
+
+
+
+def menu_mostrar():
+
+    devuelve = mostrar_datos()
+    print(devuelve)
+
 
 
 #-----------------------------------MENÚ--------------------------------
@@ -89,11 +129,13 @@ barraMenu= Menu(miRaiz)
 miRaiz.config(menu=barraMenu)
 
 archivoMenu= Menu(barraMenu,tearoff= 0)
-archivoMenu.add_command(label="Nuevo")
-archivoMenu.add_separator()
-archivoMenu.add_command(label= "Cerrar")
-
 barraMenu.add_cascade(label="Archivo", menu=archivoMenu)
+
+archivoMenu.add_command(label="Mostrar Películas", command= menu_mostrar)
+archivoMenu.add_separator()
+archivoMenu.add_command(label= "Borrar Películas")
+
+
 
 
 

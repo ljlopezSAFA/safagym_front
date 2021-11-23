@@ -92,18 +92,15 @@ def peli_insert(posicionvar,titulovar,aniovar,valvar):
 
     conexion_bbdd()
 
-    try:
-        sql = "INSERT INTO PELICULAS (posicion,titulo,anio,valoraciones) VALUES(%s,%s,%s,%s)"
-        val = [(posicionvar, titulovar, aniovar, valvar)]
 
-        miCursor.executemany(sql, val)
-        miConexion.commit()
+    sql = "INSERT INTO PELICULAS (posicion,titulo,anio,valoraciones) VALUES(%s,%s,%s,%s)"
+    val = [(posicionvar, titulovar, aniovar, valvar)]
 
-        print("Pelicula insertada")
-    except mysql.connector.errors.IntegrityError:
-        print("Introduce los datos correctamente")
-    except mysql.connector.errors.DataError:
-        print("Completa todos los campos correctamente")
+    miCursor.executemany(sql, val)
+    miConexion.commit()
+
+    print("Pelicula insertada")
+
 
 
 def titulo_peli(varpeli):
@@ -120,3 +117,13 @@ def titulo_peli(varpeli):
 
     except TypeError:
         print("Pelicula no encontrada")
+
+
+def mostrar_datos():
+
+    conexion_bbdd()
+
+    muestra= miCursor.execute("SELECT * FROM peliculas")
+    miConexion.commit()
+
+    return muestra

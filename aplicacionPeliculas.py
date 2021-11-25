@@ -103,6 +103,41 @@ def menu_mostrar():
     devuelve = mostrar_datos()
     print(devuelve)
 
+    ventananueva = Toplevel()
+    ventananueva.title("Pelicula en ese año")
+    ventananueva.resizable(False, False)
+
+    tablanueva = tkinter.ttk.Treeview(ventananueva, columns=('#0', '#1', '#2', '#3','#4'))
+    tablanueva.grid(row=0, column=0)
+
+    scrolluno = Scrollbar(ventananueva, command=tablanueva.yview)
+    scrolluno.grid(row=0, column=4, sticky="nsew")
+    tablanueva.config(yscrollcommand=scrolluno.set)
+
+    scrolldos = Scrollbar(ventananueva, command=tablanueva.xview, orient=HORIZONTAL)
+    scrolldos.grid(row=1, column=0, sticky="we")
+    tablanueva.config(xscrollcommand=scrolldos.set)
+
+    tablanueva.heading("#0", text="Posición")
+    tablanueva.heading("#1", text="Título")
+    tablanueva.heading("#2", text="Año")
+    tablanueva.heading("#3", text="Valoracion")
+    tablanueva.heading("#4", text="Sinopsis")
+
+
+    tablanueva.tag_configure('fuente', font=("Arial", 12, "bold"))
+
+    tablanueva.column('#0', anchor="center")
+    tablanueva.column('#1', anchor="center")
+    tablanueva.column('#2', anchor="center")
+    tablanueva.column('#3', anchor="center")
+    tablanueva.column('#4', anchor="center")
+    tablanueva.column('#5', width=0)
+
+    for i in range(len(obtenerAnio)):
+        tablanueva.insert('', 0, tags='fuente', text=obtenerAnio[i][0],
+                          values=(obtenerAnio[i][1], obtenerAnio[i][2], obtenerAnio[i][3]))
+        tablanueva.insert('', 1, text="")
 
 
 def crear_ventana():

@@ -123,7 +123,9 @@ def mostrar_datos():
 
     conexion_bbdd()
 
-    muestra= miCursor.execute("SELECT * FROM peliculas")
+    miCursor.execute("SELECT posicion, titulo, anio, valoraciones, sinopsis FROM peliculas")
+    muestra= miCursor.fetchall()
     miConexion.commit()
-
+    print(muestra)
     return muestra
+

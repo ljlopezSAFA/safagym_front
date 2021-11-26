@@ -185,9 +185,24 @@ def peli_por_valoracion():
         messagebox.showerror(message="Has introducido un valor incorrecto", title="ERROR")
 
 
+def cerrar_aplicacion():
+    miRaiz.destroy()
+
+
+def borrar_todo():
+    respuesta = messagebox.askquestion(message="¿Estás seguro de que quieres borrar los datos?",title="Borrar Peliculas")
+
+    if respuesta == "yes":
+        borrar_datos()
+        messagebox.showinfo(message="Se han borrado todas las peliculas", title="Borrado")
+
+
+def carga_pelicula():
+    insertar_valores()
+    messagebox.showinfo(message="Peliculas insertadas correctamente",title="Hecho")
 
 def crear_ventana():
-
+    global miRaiz
     miRaiz = Tk()
 
     global posicionvar
@@ -220,10 +235,18 @@ def crear_ventana():
 
     archivoMenu= Menu(barraMenu,tearoff= 0)
     barraMenu.add_cascade(label="Archivo", menu=archivoMenu)
-
-    archivoMenu.add_command(label="Mostrar Películas", command= menu_mostrar)
+    archivoMenu.add_command(label="Mostrar Películas", command=menu_mostrar)
     archivoMenu.add_separator()
-    archivoMenu.add_command(label= "Borrar Películas")
+    archivoMenu.add_command(label="Borrar Películas", command= borrar_todo)
+    archivoMenu.add_separator()
+    archivoMenu.add_command(label="Cargar Peliculas", command=carga_pelicula)
+
+
+    cerrarMenu = Menu(barraMenu,tearoff= 0)
+    barraMenu.add_cascade(label="Cerrar", menu=cerrarMenu)
+    cerrarMenu.add_command(label="Cerrar aplicación", command=cerrar_aplicacion)
+
+
 
 
 
@@ -267,21 +290,21 @@ def crear_ventana():
     #------------------------------BOTONES------------------------------------------
 
 
-    botonPosicion= Button(miFrame,text="OK", width=5, command= peli_por_posicion)
+    botonPosicion= Button(miFrame,text="OK", width=5,bg="orange", command= peli_por_posicion)
     botonPosicion.grid(row=0, column= 3,padx=10)
 
-    botonTitulo= Button(miFrame,text="OK", width=5, command=peli_por_titulo)
+    botonTitulo= Button(miFrame,text="OK", width=5,bg="orange", command=peli_por_titulo)
     botonTitulo.grid(row=1, column= 3,padx=10)
 
 
-    botonAnio= Button(miFrame,text="OK", width=5, command= peli_por_anio)
+    botonAnio= Button(miFrame,text="OK", width=5,bg="orange", command= peli_por_anio)
     botonAnio.grid(row=2, column= 3,padx=10)
 
 
-    botonVal= Button(miFrame,text="OK", width=5, command= peli_por_valoracion)
+    botonVal= Button(miFrame,text="OK",bg="orange", width=5, command= peli_por_valoracion)
     botonVal.grid(row=3, column= 3,padx=10)
 
-    botonInsertar= Button(miFrame, text="Insertar Pelicula",command= insertar_pelicula)
+    botonInsertar= Button(miFrame, text="Insertar Pelicula",bg="orange",command= insertar_pelicula)
     botonInsertar.grid(row=4, column=1,columnspan=2,padx=10,pady=10)
 
     miRaiz.mainloop()

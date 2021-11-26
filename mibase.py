@@ -47,7 +47,7 @@ def crear_tabla():
 
 
 def insertar_valores():
-
+    conexion_bbdd()
     obtener_todas_url()
     cargar_url()
     sqlInsert = (
@@ -129,6 +129,8 @@ def mostrar_datos():
 
     return muestra
 
+
+
 def val_peli(valoracion):
 
     conexion_bbdd()
@@ -138,3 +140,15 @@ def val_peli(valoracion):
     miConexion.commit()
 
     return val
+
+
+
+def borrar_datos():
+
+    conexion_bbdd()
+    miCursor.execute("DELETE FROM peliculas")
+    miCursor.fetchall()
+    miConexion.commit()
+
+
+

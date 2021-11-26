@@ -126,6 +126,15 @@ def mostrar_datos():
     miCursor.execute("SELECT posicion, titulo, anio, valoraciones, sinopsis FROM peliculas")
     muestra= miCursor.fetchall()
     miConexion.commit()
-    print(muestra)
+
     return muestra
 
+def val_peli(valoracion):
+
+    conexion_bbdd()
+
+    miCursor.execute("SELECT posicion,titulo,anio,valoraciones,sinopsis FROM peliculas WHERE valoraciones >="+str(valoracion))
+    val= miCursor.fetchall()
+    miConexion.commit()
+
+    return val

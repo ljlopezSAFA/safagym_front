@@ -60,10 +60,10 @@ def peli_por_anio():
         tablanueva.column('#3', width=500)
         tablanueva.column('#4', width= 0)
 
-
-        for i in range(len(obtenerAnio)):
-            tablanueva.insert('', 0, tags='fuente', text=obtenerAnio[i][0],
-                              values=(obtenerAnio[i][1], obtenerAnio[i][2], obtenerAnio[i][3]))
+        listados= list(reversed(obtenerAnio))
+        for i in range(len(listados)):
+            tablanueva.insert('', 0, tags='fuente', text=listados[i][0],
+                              values=(listados[i][1], listados[i][2], listados[i][3]))
             tablanueva.insert('', 1, text="")
 
 
@@ -101,7 +101,7 @@ def peli_por_titulo():
 def menu_mostrar():
 
     devuelve = mostrar_datos()
-    print(devuelve)
+
 
     ventananueva = Toplevel()
     ventananueva.title("Pelicula en ese año")
@@ -131,13 +131,59 @@ def menu_mostrar():
     tablanueva.column('#1', anchor="center")
     tablanueva.column('#2', anchor="center")
     tablanueva.column('#3', anchor="center")
-    tablanueva.column('#4', anchor="center")
+    tablanueva.column('#4', anchor="center",width=400)
     tablanueva.column('#5', width=0)
-
-    for i in range(len(obtenerAnio)):
-        tablanueva.insert('', 0, tags='fuente', text=obtenerAnio[i][0],
-                          values=(obtenerAnio[i][1], obtenerAnio[i][2], obtenerAnio[i][3]))
+    alreves =list(reversed(devuelve))
+    for i in range(len(alreves)):
+        tablanueva.insert('', 0, tags='fuente', text=alreves[i][0],
+                          values=(alreves[i][1], alreves[i][2], alreves[i][3], alreves[i][4]))
         tablanueva.insert('', 1, text="")
+
+
+
+def peli_por_valoracion():
+
+    try:
+        traerPelis = val_peli(valvar.get())
+
+        ventananueva = Toplevel()
+        ventananueva.title("Peliculas con más de un " +valvar.get()+":")
+        ventananueva.resizable(False, False)
+
+        tablanueva = tkinter.ttk.Treeview(ventananueva, columns=('#0', '#1', '#2', '#3', '#4'))
+        tablanueva.grid(row=0, column=0)
+
+        scrolluno = Scrollbar(ventananueva, command=tablanueva.yview)
+        scrolluno.grid(row=0, column=4, sticky="nsew")
+        tablanueva.config(yscrollcommand=scrolluno.set)
+
+        scrolldos = Scrollbar(ventananueva, command=tablanueva.xview, orient=HORIZONTAL)
+        scrolldos.grid(row=1, column=0, sticky="we")
+        tablanueva.config(xscrollcommand=scrolldos.set)
+
+        tablanueva.heading("#0", text="Posición")
+        tablanueva.heading("#1", text="Título")
+        tablanueva.heading("#2", text="Año")
+        tablanueva.heading("#3", text="Valoracion")
+        tablanueva.heading("#4", text="Sinopsis")
+
+        tablanueva.tag_configure('fuente', font=("Arial", 12, "bold"))
+
+        tablanueva.column('#0', anchor="center")
+        tablanueva.column('#1', anchor="center")
+        tablanueva.column('#2', anchor="center")
+        tablanueva.column('#3', anchor="center")
+        tablanueva.column('#4', anchor="center", width=400)
+        tablanueva.column('#5', width=0)
+        nuevalista = list(reversed(traerPelis))
+        for i in range(len(nuevalista)):
+            tablanueva.insert('', 0, tags='fuente', text=nuevalista[i][0],
+                              values=(nuevalista[i][1], nuevalista[i][2], nuevalista[i][3], nuevalista[i][4]))
+            tablanueva.insert('', 1, text="")
+
+    except:
+        messagebox.showerror(message="Has introducido un valor incorrecto", title="ERROR")
+
 
 
 def crear_ventana():
@@ -232,13 +278,14 @@ def crear_ventana():
     botonAnio.grid(row=2, column= 3,padx=10)
 
 
-    botonVal= Button(miFrame,text="OK", width=5)
+    botonVal= Button(miFrame,text="OK", width=5, command= peli_por_valoracion)
     botonVal.grid(row=3, column= 3,padx=10)
 
     botonInsertar= Button(miFrame, text="Insertar Pelicula",command= insertar_pelicula)
     botonInsertar.grid(row=4, column=1,columnspan=2,padx=10,pady=10)
 
     miRaiz.mainloop()
+
 
 
 

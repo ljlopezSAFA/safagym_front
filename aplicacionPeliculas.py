@@ -290,21 +290,21 @@ def crear_ventana():
     #------------------------------BOTONES------------------------------------------
 
 
-    botonPosicion= Button(miFrame,text="OK", width=5,bg="orange", command= peli_por_posicion)
+    botonPosicion= Button(miFrame,text="OK", width=5,bg="black",fg="white", command= peli_por_posicion)
     botonPosicion.grid(row=0, column= 3,padx=10)
 
-    botonTitulo= Button(miFrame,text="OK", width=5,bg="orange", command=peli_por_titulo)
+    botonTitulo= Button(miFrame,text="OK", width=5,bg="black",fg="white", command=peli_por_titulo)
     botonTitulo.grid(row=1, column= 3,padx=10)
 
 
-    botonAnio= Button(miFrame,text="OK", width=5,bg="orange", command= peli_por_anio)
+    botonAnio= Button(miFrame,text="OK", width=5,bg="black",fg="white", command= peli_por_anio)
     botonAnio.grid(row=2, column= 3,padx=10)
 
 
-    botonVal= Button(miFrame,text="OK",bg="orange", width=5, command= peli_por_valoracion)
+    botonVal= Button(miFrame,text="OK",bg="black",fg="white", width=5, command= peli_por_valoracion)
     botonVal.grid(row=3, column= 3,padx=10)
 
-    botonInsertar= Button(miFrame, text="Insertar Pelicula",bg="orange",command= insertar_pelicula)
+    botonInsertar= Button(miFrame, text="Insertar Pelicula",bg="black",fg="white",command= insertar_pelicula)
     botonInsertar.grid(row=4, column=1,columnspan=2,padx=10,pady=10)
 
     miRaiz.mainloop()

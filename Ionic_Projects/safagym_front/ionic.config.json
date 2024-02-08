@@ -1,0 +1,7 @@
+{
+  "name": "safagym_front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

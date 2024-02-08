@@ -1,0 +1,29 @@
+<ion-menu contentId="main-content" side="end">
+    <!-- Contenido del menú lateral -->
+    <ion-content>
+      <ion-list>
+        <ion-item href="/monitor">
+          Monitores
+        </ion-item>
+        <ion-item>Item 2</ion-item>
+        <!-- Agrega más elementos del menú según tus necesidades -->
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <ion-header>
+    <ion-toolbar>
+
+      <ion-img class="ion-img-centered" src='assets/img/logo_safa_gym.png' style="height:8%; width: 12%"></ion-img>
+
+
+      <!-- Menú lateral de hamburguesa a la derecha -->
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+

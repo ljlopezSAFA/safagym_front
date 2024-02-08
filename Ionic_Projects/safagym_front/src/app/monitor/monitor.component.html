@@ -1,0 +1,23 @@
+
+<ion-content >
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col > <b>ID</b></ion-col>
+        <ion-col><b>Nombre</b></ion-col>
+        <ion-col ><b>Apellidos</b></ion-col>
+        <ion-col><b>DNI</b></ion-col>
+        <ion-col><b>Fecha Nacimiento</b></ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let m of monitores">
+        <ion-col>{{ m.id }}</ion-col>
+        <ion-col>{{ m.nombre }}</ion-col>
+        <ion-col>{{ m.apellidos }}</ion-col>
+        <ion-col>{{ m.dni }}</ion-col>
+        <ion-col>{{ m.fechaNacimiento }}</ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-list>
+</ion-content>

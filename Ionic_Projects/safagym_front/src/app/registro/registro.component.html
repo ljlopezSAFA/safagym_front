@@ -1,0 +1,81 @@
+<ion-content class="ion-padding">
+  <ion-grid class="ion-no-padding" fullscreen>
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" size-md="8" size-lg="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-img class="logo" src='assets/img/logo_safa_gym.png' style="width:200px"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+
+
+            <ion-row style="padding-top: 10px">
+              <ion-col>
+                <ion-card-subtitle style="text-align: center; padding-right: 30px;"><b><u>DATOS CLIENTE</u> </b></ion-card-subtitle>
+              </ion-col>
+              <ion-col>
+                <ion-card-subtitle style="text-align: center; padding-left: 30px;"><b><u>DATOS USUARIO</u></b></ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+
+            <ion-row >
+                <ion-col class="separador">
+                  <ion-input placeholder="Nombre" [(ngModel)]="nombre">
+                    <ion-icon slot="end" name="person-outline" aria-hidden="true"></ion-icon>
+                  </ion-input>
+                </ion-col>
+              <ion-col class="left"></ion-col>
+              </ion-row>
+
+
+            <ion-row>
+              <ion-col class="separador">
+                <ion-input placeholder="Apellidos" [(ngModel)]="apellidos">
+                  <ion-icon slot="end" name="person" aria-hidden="true"></ion-icon>
+                </ion-input>
+              </ion-col>
+              <ion-col class="left">
+                <ion-input placeholder="Username" [(ngModel)]="username">
+                  <ion-icon slot="start" name="person-circle-outline" aria-hidden="true"></ion-icon>
+                </ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col class="separador">
+                <ion-input placeholder="DNI" [(ngModel)]="dni">
+                  <ion-icon slot="end" name="id-card-outline" aria-hidden="true"></ion-icon>
+                </ion-input>
+              </ion-col>
+              <ion-col class="left">
+                <ion-input placeholder="Contraseña" type="password" [(ngModel)]="password">
+                  <ion-icon slot="start" name="key-outline" aria-hidden="true"></ion-icon>
+                </ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col class="separador">
+                <ion-input placeholder="fecha nacimiento" [(ngModel)]="fecha" type="date">
+                </ion-input>
+              </ion-col>
+              <ion-col class="left"></ion-col>
+            </ion-row>
+
+
+
+
+
+
+
+
+
+            <ion-row>
+              <ion-button (click)="completarRegistro()">Completar Registro</ion-button>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

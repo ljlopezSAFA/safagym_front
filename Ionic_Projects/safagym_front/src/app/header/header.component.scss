@@ -1,8 +1,29 @@
-.ion-img-centered {
+.logo {
   margin: auto;
   display: block;
 }
 
-ion-content {
-  margin-top: 100px;
+/* Estilo base para pantallas más pequeñas o iguales a 600px */
+.logo {
+  width: 100%;
+}
+
+/* Media query para pantallas más grandes que 600px */
+@media (min-width: 601px) {
+  .logo {
+    width: 50%; /* Puedes ajustar este valor según tus necesidades */
+  }
+}
+
+/* Media query para pantallas más grandes que 1200px */
+@media (min-width: 1201px) {
+  .logo {
+    width: 30%; /* Puedes ajustar este valor según tus necesidades */
+  }
+}
+
+
+/* En tu archivo de estilos o en el componente */
+ion-menu.menu-izquierdo {
+  z-index: 9999; /* Ajusta según sea necesario */
 }

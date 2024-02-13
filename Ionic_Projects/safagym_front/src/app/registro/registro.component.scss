@@ -1,0 +1,99 @@
+
+
+ion-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-grid{
+  background-image: url("https://png.pngtree.com/background/20230528/original/pngtree-gym-is-reflected-in-an-odd-light-picture-image_2773779.jpg");
+
+}
+
+.logo {
+  margin: auto;
+  display: block;
+}
+
+/* Estilo base para pantallas más pequeñas o iguales a 600px */
+.logo {
+  width: 100%;
+}
+
+/* Media query para pantallas más grandes que 600px */
+@media (min-width: 601px) {
+  .logo {
+    width: 50%; /* Puedes ajustar este valor según tus necesidades */
+  }
+}
+
+/* Media query para pantallas más grandes que 1200px */
+@media (min-width: 1201px) {
+  .logo {
+    width: 30%; /* Puedes ajustar este valor según tus necesidades */
+  }
+}
+
+/* login.component.scss */
+ion-card {
+  margin: 10px; /* Espaciado externo de la tarjeta */
+  padding: 20px; /* Espaciado interno de la tarjeta */
+  max-width: 500px; /* Ancho máximo de la tarjeta */
+  width: 100%; /* Hace que la tarjeta ocupe all el ancho disponible */
+  box-sizing: border-box; /* Incluye los márgenes y paddings en el tamaño total */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+}
+
+ion-input{
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+ion-button{
+  margin-top: 30px;
+  width: 100%;
+  color: white;
+}
+
+
+ion-grid {
+  height: 100%;
+}
+
+ion-row {
+  display: flex;
+  justify-content: center; /* Centra la tarjeta horizontalmente */
+  align-items: center; /* Centra la tarjeta verticalmente */
+  height: 100%;
+}
+
+
+
+ion-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1500px; /* Ancho máximo de la tarjeta */
+  width: 100%; /* Hace que la tarjeta ocupe todo el ancho disponible */
+}
+
+ion-col.separador{
+  margin: auto;
+  border-right: solid 1pt;
+  border-right-color: #0d6891ff;
+  padding-right: 20px;
+}
+
+ion-col.left{
+  padding-left: 20px;
+}
+
+ion-input{
+  text-align: center;
+}
+

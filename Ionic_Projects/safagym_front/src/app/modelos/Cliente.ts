@@ -1,10 +1,12 @@
+import {Usuario} from "./Usuario";
 
 
-export class Monitor{
+export class Cliente{
   id?:number;
   nombre?:string;
   apellidos?:string;
   dni?:string;
   fechaNacimiento?:string;
-  foto?:string;
+  usuario?:Usuario;
+
 }

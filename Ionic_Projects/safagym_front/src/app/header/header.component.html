@@ -1,29 +1,48 @@
-<ion-menu contentId="main-content" side="end">
-    <!-- Contenido del menú lateral -->
-    <ion-content>
-      <ion-list>
-        <ion-item href="/monitor">
-          Monitores
-        </ion-item>
-        <ion-item>Item 2</ion-item>
-        <!-- Agrega más elementos del menú según tus necesidades -->
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+<ion-menu contentId="main-content" menuId="menu-derecho" side="end">
+  <!-- Contenido del menú lateral derecho -->
+  <ion-content>
+    <ion-list>
+      <ion-item href="/monitor">
+        Monitores
+      </ion-item>
+      <ion-item href="/clase">
+        Clases
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <ion-router-outlet id="main-content"></ion-router-outlet>
+<ion-menu contentId="main-content" menuId="menu-izquierdo" side="start">
+  <!-- Contenido del Menú Lateral Izquierdo -->
+  <ion-content>
+    <!-- Enlaces o elementos del menú -->
+    <ion-list>
+      <ion-item *ngIf="!logueado" href="login">Login</ion-item>
+      <ion-item *ngIf="logueado">Perfil</ion-item>
+      <ion-item *ngIf="logueado">Mis Clases</ion-item>
+      <ion-item *ngIf="logueado" href="abono">Mi Abono</ion-item>
+      <ion-item *ngIf="logueado" (click)="logout()">Logout</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <ion-header>
-    <ion-toolbar>
+<ion-router-outlet id="main-content"></ion-router-outlet>
 
-      <ion-img class="ion-img-centered" src='assets/img/logo_safa_gym.png' style="height:8%; width: 12%"></ion-img>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu-izquierdo" >
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
 
+    <ion-item href="/home">
+      <ion-img class="logo" src='assets/img/logo_safa_gym.png' style="width:200px"></ion-img>
+    </ion-item>
 
-      <!-- Menú lateral de hamburguesa a la derecha -->
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-
+    <!-- Menú lateral de hamburguesa a la derecha -->
+    <ion-buttons slot="end">
+      <ion-menu-button menu="menu-derecho"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

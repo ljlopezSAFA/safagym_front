@@ -1,0 +1,30 @@
+<ion-content class="ion-padding">
+  <ion-grid class="ion-no-padding" fullscreen>
+    <ion-row class="ion-no-padding">
+      <ion-col size="12" size-md="8" size-lg="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-img class="logo" src='assets/img/logo_safa_gym.png' style="width:200px"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- Contenido del formulario de inicio de sesión -->
+            <ion-input placeholder="Nombre de usuario" [(ngModel)]="username">
+              <ion-icon slot="start" name="person-outline" aria-hidden="true"></ion-icon>
+            </ion-input>
+            <ion-input placeholder="Contraseña" type="password" [(ngModel)]="password">
+              <ion-icon slot="start" name="key-outline" aria-hidden="true"></ion-icon>
+            </ion-input>
+            <ion-row>
+              <ion-col>
+                <ion-button (click)="iniciarSesion()">Iniciar Sesión</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button href="/registro">Registrarse</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

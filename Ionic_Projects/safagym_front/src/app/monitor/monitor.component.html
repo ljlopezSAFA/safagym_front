@@ -1,22 +1,38 @@
+<app-header></app-header>
 
-<ion-content >
+<ion-content>
+  <ion-row></ion-row>
+  <ion-title color="medium" class="ion-text-center"><b>Monitores del Gimnasio</b></ion-title>
+
   <ion-list>
     <ion-grid>
+
       <ion-row>
-        <ion-col > <b>ID</b></ion-col>
-        <ion-col><b>Nombre</b></ion-col>
-        <ion-col ><b>Apellidos</b></ion-col>
-        <ion-col><b>DNI</b></ion-col>
-        <ion-col><b>Fecha Nacimiento</b></ion-col>
+        <ion-col size-md="3" size-sm="6" size-xs="12" *ngFor="let m of monitores">
+          <ion-card>
+            <div class="cara">
+              <img class="centrar-imagen" src="{{ m.foto }}"/>
+              <ion-card-header>
+                <ion-card-subtitle>{{ m.apellidos }}</ion-card-subtitle>
+                <ion-card-title>{{ m.nombre }}</ion-card-title>
+              </ion-card-header>
+            </div>
+            <div class="reverso">
+              <ion-card-content class="voltear-tarjeta volteado">
+                <ion-row>
+                  <ion-icon name="id-card-outline" color="dark" size="medium">  </ion-icon>
+                  <ion-label>     {{ m.dni }}</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-icon name="calendar-number-outline" color="dark" size="medium"></ion-icon>
+                  <ion-label>   {{ m.fechaNacimiento }}</ion-label>
+                </ion-row>
+              </ion-card-content>
+            </div>
+          </ion-card>
+        </ion-col>
       </ion-row>
 
-      <ion-row *ngFor="let m of monitores">
-        <ion-col>{{ m.id }}</ion-col>
-        <ion-col>{{ m.nombre }}</ion-col>
-        <ion-col>{{ m.apellidos }}</ion-col>
-        <ion-col>{{ m.dni }}</ion-col>
-        <ion-col>{{ m.fechaNacimiento }}</ion-col>
-      </ion-row>
 
     </ion-grid>
   </ion-list>

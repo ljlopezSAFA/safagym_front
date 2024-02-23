@@ -21,11 +21,18 @@ import {ToastController} from "@ionic/angular/standalone";
 })
 export class AbonoComponent  implements OnInit {
 
-  abono:Abono;
-  tipoAbono: TipoAbono;
-  servicios: Servicio[];
+  abonoActual?:Abono;
+  tipoAbonoActual?: TipoAbono;
+
+  ultimoAbono?:Abono;
+  tipoAbonoUltimo?: TipoAbono;
+
+  serviciosActual?: Servicio[];
+  serviciosUltimo?: Servicio[];
+
   tiposDisponibles: TipoAbono[];
   abonoSeleccionado: number;
+
   mostrarModal :boolean;
   canDismiss = false;
   presentingElement = null;
@@ -36,9 +43,6 @@ export class AbonoComponent  implements OnInit {
       happyOutline,
       sadOutline
     });
-    this.abono= new Abono();
-    this.tipoAbono= new TipoAbono();
-    this.servicios = [];
     this.tiposDisponibles = [];
     this.abonoSeleccionado = 0;
     this.mostrarModal = false;
@@ -46,26 +50,45 @@ export class AbonoComponent  implements OnInit {
 
   ngOnInit() {
 
+    //ABONO ACTUAL
     this.service.abonoUsuarioLogueado().subscribe({
       next: (a) => {
-        this.abono = a;
+        this.abonoActual = a;
         if(a && a.tipoAbono){
-          this.tipoAbono = a.tipoAbono;
-          this.tipoAbono.descripcion = this.tipoAbono.descripcion?.substring(2);
+          this.tipoAbonoActual = a.tipoAbono;
+          this.tipoAbonoActual.descripcion = this.tipoAbonoActual.descripcion?.substring(2);
+          this.serviciosActual = a.tipoAbono.servicios;
         }
-        if(a.tipoAbono?.servicios){this.servicios = a.tipoAbono.servicios}
-        console.log(this.abono);
       },
       error: (e) => console.error(e),
       complete: () => console.log("Abono Obtenido")
 
-    })
+    });
 
+
+    //ULTIMO ABONO
+    this.service.ultimoAbonoPasadoUsuarioLogueado().subscribe({
+      next: (a) => {
+        this.ultimoAbono = a;
+        if(a && a.tipoAbono){
+          this.tipoAbonoUltimo = a.tipoAbono;
+          this.tipoAbonoUltimo.descripcion = this.tipoAbonoUltimo.descripcion?.substring(2);
+          this.serviciosUltimo = a.tipoAbono.servicios;
+        }
+      },
+      error: (e) => console.error(e),
+      complete: () => console.log("Abono Obtenido")
+
+    });
+
+
+    //TIPOS DE ABONO DISPONIBLES
     this.service.listarTipoAbonos().subscribe({
       next: (l) => this.tiposDisponibles = l,
       error: (e) => console.error(e),
       complete: () => this.tiposDisponibles.forEach(t=> t.descripcion = t.descripcion?.substring(2))
     });
+
   }
 
 
@@ -77,23 +100,19 @@ export class AbonoComponent  implements OnInit {
 
   contratar(){
     this.service.contratarRenovarAbono(this.abonoSeleccionado).subscribe({
-      next: (l) => {
-        this.abono = l;
-        if(l && l.tipoAbono){
-          this.tipoAbono = l.tipoAbono;
-          this.tipoAbono.descripcion = this.tipoAbono.descripcion?.substring(2);
+      next: (a) =>{
+        if(a.status == 204){
+          this.mostrarMensaje("Ya tienes un abono vigente actualmente.","warning","sad-outline" );
+        }else{
+          this.mostrarMensaje("Abono contratado con éxito","primary","happy-outline");
         }
-        if(l.tipoAbono?.servicios){this.servicios = l.tipoAbono.servicios}
-        console.log(this.abono);
-
       },
       error: (e) =>{
-        console.log(e);
-        this.mostrarMensaje("Ha ocurrido un problema al contratar abono","danger","sad-outline" );
+        this.mostrarMensaje("Ha ocurrido un error al intentar contratar abonos.","danger","sad-outline" );
       } ,
       complete: () => {
-        this.mostrarMensaje("Abono contratado con éxito","primary","happy-outline");
         this.mostrarModal = false;
+        this.ngOnInit();
       }
     });
   }

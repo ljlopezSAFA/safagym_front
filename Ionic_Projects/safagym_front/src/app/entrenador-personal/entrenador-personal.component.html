@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <ion-row >
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-label style="text-align: center"> <h1>Entrenador personal</h1></ion-label>
+            <ion-button *ngIf="!this.entrenador" color="primary" (click)="solicitarEntrenadorPersonal()">Solicitar Entrenador Personal</ion-button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="entrenador" class="ion-align-items-center ion-justify-content-center">
+            <ion-card style="display:block;">
+                <ion-img src="{{ entrenador.foto }}"></ion-img>
+                <ion-card-header>
+                  <ion-card-subtitle>{{ entrenador.apellidos }}</ion-card-subtitle>
+                  <ion-card-title>{{ entrenador.nombre }}</ion-card-title>
+                </ion-card-header>
+            </ion-card>
+        </ion-row>
+
+
+      </ion-col>
+      <ion-col size="9" style="background-image: url('https://png.pngtree.com/background/20230519/original/pngtree-an-old-gym-setting-with-dumbbells-picture-image_2667256.jpg')">
+
+
+        <ion-grid>
+          <ion-infinite-scroll *ngIf="this.mensajes.length >= 10" (ionInfinite)="onIonInfinite($event)" position="top">
+            <ion-infinite-scroll-content style="color: white">"Cargando mensajes anteriores"</ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+
+          <ion-row *ngFor="let mensaje of mensajes;">
+            <ion-col>
+              <!-- Mensajes del receptor a la izquierda -->
+              <ion-card *ngIf="mensaje.emisor == receptor">
+                <ion-row>
+                    <ion-avatar *ngIf="entrenador">
+                      <img src="{{entrenador.foto}}" alt="avatar"/>
+                    </ion-avatar>
+                    <ion-card-title class="ion-text-start"> <h3>{{ mensaje.texto }}</h3></ion-card-title>
+                </ion-row>
+              </ion-card>
+            </ion-col>
+
+            <ion-col>
+              <!-- Mensajes del emisor a la derecha -->
+              <ion-card *ngIf="mensaje.emisor != receptor">
+                <ion-row>
+                  <ion-avatar *ngIf="entrenador">
+                    <img src="https://cdn.icon-icons.com/icons2/3551/PNG/512/sportman_boy_man_icon_224858.png" alt="avatar"/>
+                  </ion-avatar>
+                  <ion-card-title class="ion-text-start"> <h3>{{ mensaje.texto }}</h3></ion-card-title>
+                </ion-row>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+        <ion-row>
+          <ion-col size="11"><ion-input  label="Escribe algo..."  type="text" [(ngModel)]="texto" style="background-color: #9d9fa6"></ion-input></ion-col>
+          <ion-col size="1"><ion-button color="primary" (click)="enviarMensaje()" >Enviar</ion-button></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

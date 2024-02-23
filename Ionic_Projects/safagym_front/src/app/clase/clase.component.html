@@ -115,7 +115,7 @@
               </ion-label>
               <ion-label></ion-label>
               <ion-label></ion-label>
-              <ion-label>  </ion-label>
+              <ion-label></ion-label>
               <ion-label><p>¡A tope!</p></ion-label>
               <ion-label>😊</ion-label>
               <ion-label (click)="mostrarModal=false" style="display: flex; left: auto; max-width: 30px">
@@ -126,14 +126,14 @@
           <ion-list>
             <ion-card-subtitle style="text-align: center">Asistentes</ion-card-subtitle>
             <ion-grid>
-            <ion-item >
-              <ion-col size="6" *ngFor="let a of asistentes" style="height: 30px">
-              <ion-label style="font-size: 9pt; text-align: center">
-                <ion-icon name="person-outline" style="padding-right: 10px "></ion-icon>
-                {{a.nombre}} , {{a.apellidos}}
-              </ion-label>
-              </ion-col>
-            </ion-item>
+              <ion-row style="padding-left: 40px">
+                <ion-col size="6" *ngFor="let a of asistentes" style="height: 30px">
+                  <ion-label style="font-size: 9pt; text-align: center">
+                    <ion-icon name="person-outline" style="padding-right: 10px "></ion-icon>
+                    {{a.nombre}} , {{a.apellidos}}
+                  </ion-label>
+                </ion-col>
+              </ion-row>
             </ion-grid>
           </ion-list>
         </ion-content>

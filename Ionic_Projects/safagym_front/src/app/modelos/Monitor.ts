@@ -1,3 +1,4 @@
+import {Usuario} from "./Usuario";
 
 
 export class Monitor{
@@ -7,4 +8,5 @@ export class Monitor{
   dni?:string;
   fechaNacimiento?:string;
   foto?:string;
+  usuario?: Usuario;
 }

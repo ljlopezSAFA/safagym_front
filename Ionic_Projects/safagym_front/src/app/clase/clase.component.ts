@@ -100,7 +100,7 @@ export class ClaseComponent implements OnInit {
       },
       complete: () => {
         this.mostrarMensaje("Se ha completado tu inscripción a la clase","primary","happy-outline");
-        this.ngOnInit()
+        this.cargarClases();
       }
     });
   }
@@ -114,7 +114,7 @@ export class ClaseComponent implements OnInit {
       },
       complete: () => {
         this.mostrarMensaje("Te has borrado de la clase correctamente","danger","sad-outline");
-        this.ngOnInit()
+        this.cargarClases();
       }
     });
   }

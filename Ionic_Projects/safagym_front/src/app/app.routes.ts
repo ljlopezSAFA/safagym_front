@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegistroComponent} from "./registro/registro.component";
 import {ErrorComponent} from "./error/error.component";
 import {AbonoComponent} from "./abono/abono.component";
+import {EntrenadorPersonalComponent} from "./entrenador-personal/entrenador-personal.component";
 
 export const routes: Routes = [
   {path: 'home',component:HomePage,},
@@ -16,4 +17,5 @@ export const routes: Routes = [
   {path: 'registro',component:RegistroComponent},
   {path: 'abono',component:AbonoComponent},
   {path: 'error',component:ErrorComponent},
+  {path: 'entrenador-personal',component:EntrenadorPersonalComponent},
 ];

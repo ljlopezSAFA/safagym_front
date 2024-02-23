@@ -26,9 +26,14 @@ export class AbonoService {
     return this.http.get<Abono>(`${this.abonoUrl}`, options);
   }
 
-  contratarRenovarAbono(idTipoAbono: number):  Observable<Abono>{
+  ultimoAbonoPasadoUsuarioLogueado(): Observable<Abono> {
     const options = this.loginService.autorizarPeticion();
-    return this.http.post(`${this.abonoUrl}`+ "?tipoAbono=" +idTipoAbono+ "&XDEBUG_SESSION_START=13368",[] ,options)
+    return this.http.get<Abono>(`${this.abonoUrl}`+"/last", options);
+  }
+
+  contratarRenovarAbono(idTipoAbono: number):  Observable<any>{
+    const options = this.loginService.autorizarPeticion();
+    return this.http.post(`${this.abonoUrl}`+ "?tipoAbono=" +idTipoAbono,[] ,options)
   }
 
 

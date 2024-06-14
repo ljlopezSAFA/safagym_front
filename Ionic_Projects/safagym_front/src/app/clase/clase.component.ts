@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {IonicModule, ToastController} from "@ionic/angular";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {IonicModule, IonModal, ToastController} from "@ionic/angular";
 import {CommonModule, DatePipe} from "@angular/common";
 import {HeaderComponent} from "../header/header.component";
 import {ClaseService} from "../service/clase.service";
@@ -16,13 +16,16 @@ import {
   people,
   peopleOutline,
   personCircleOutline,
+  personOutline,
   sadOutline
 } from "ionicons/icons";
 import {Clase} from "../modelos/Clase";
 import {Monitor} from "../modelos/Monitor";
 import {Cliente} from "../modelos/Cliente";
 import {Router} from "@angular/router";
-
+import {MonitorService} from "../service/monitor.service";
+import {Observable} from "rxjs";
+import * as moment from "moment/moment";
 
 @Component({
   selector: 'app-clase',
@@ -34,6 +37,7 @@ import {Router} from "@angular/router";
 })
 export class ClaseComponent implements OnInit {
 
+  @ViewChild('crearClaseModal') modal!: IonModal;
   clases: any = []
   fechaFormateada: any;
   fechaInicio: any;
@@ -41,16 +45,21 @@ export class ClaseComponent implements OnInit {
   monitorSeleccionado: Monitor;
   mostrarModal: boolean;
   asistentes: Cliente[];
+  claseNueva: Clase;
+  monitores: Observable<Monitor[]>;
 
-  constructor(private service: ClaseService, private datepipe: DatePipe,
-              private toastController: ToastController, private  router: Router) {
+  constructor(private service: ClaseService,private monitorService: MonitorService, private datepipe: DatePipe,
+              private toastController: ToastController, private router: Router) {
     this.formatear(new Date());
     this.rellenarInicioYFin(new Date());
     this.monitorSeleccionado = new Monitor();
+    this.claseNueva = new Clase();
     this.mostrarModal = false;
     this.asistentes = [];
+    this.monitores = monitorService.obtenerDatos();
     addIcons({
       alarmOutline,
+      personOutline,
       peopleOutline,
       hourglassOutline,
       calendarOutline,
@@ -96,10 +105,10 @@ export class ClaseComponent implements OnInit {
       next: (d) => console.log(d),
       error: (e) => {
         console.error(e);
-        this.router.navigate( ["error"]);
+        this.router.navigate(["error"]);
       },
       complete: () => {
-        this.mostrarMensaje("Se ha completado tu inscripción a la clase","primary","happy-outline");
+        this.mostrarMensaje("Se ha completado tu inscripción a la clase", "primary", "happy-outline");
         this.cargarClases();
       }
     });
@@ -110,45 +119,46 @@ export class ClaseComponent implements OnInit {
       next: (d) => console.log(d),
       error: (e) => {
         console.error(e);
-        this.router.navigate( ["error"]);
+        this.router.navigate(["error"]);
       },
       complete: () => {
-        this.mostrarMensaje("Te has borrado de la clase correctamente","danger","sad-outline");
+        this.mostrarMensaje("Te has borrado de la clase correctamente", "danger", "sad-outline");
         this.cargarClases();
       }
     });
   }
 
-  comprobarIncripcion(clase:Clase):boolean {
+  comprobarIncripcion(clase: Clase): boolean {
     let usernameLoged = localStorage.getItem('username');
     return <boolean>clase.clientes?.some(c => c.usuario?.username === usernameLoged);
 
   }
 
-  cargarClases(){
+  cargarClases() {
     this.service.obtenerPorFecha(this.fechaFormateada).subscribe({
       next: (d) => {
-        d.forEach(c => c.fecha = new Date(c.fecha));
+        d.forEach(c => c.fecha =  moment(c.fecha,'DD/MM/YYYY HH:mm:ss'))
         this.clases = d.sort((a, b) => a.fecha - b.fecha);
       },
       error: (e) => {
         console.error(e);
-        this.router.navigate( ["error"]);
+        this.router.navigate(["error"]);
       },
-      complete: () => console.info("Éxito")
+      complete: () =>
+        console.info(this.clases)
+
     });
   }
 
 
-
-  async mostrarMensaje(mensaje:string, color:string, icon:string) {
+  async mostrarMensaje(mensaje: string, color: string, icon: string) {
 
     const toast = await this.toastController.create({
       message: mensaje,
       duration: 2000, // Duración en milisegundos
       position: 'top', // Posición del toast (top, middle, bottom)
       cssClass: 'custom-toast', // clase css
-      icon:icon,
+      icon: icon,
       animated: true,
       color: color
     });
@@ -156,14 +166,30 @@ export class ClaseComponent implements OnInit {
     toast.present();
   }
 
-  mostrarDatosMonitor(c: Clase){
+  mostrarDatosMonitor(c: Clase) {
     if (c.monitor) {
       this.monitorSeleccionado = c.monitor;
     }
     if (c.clientes) {
       this.asistentes = c.clientes;
     }
-    this.mostrarModal= true;
+    this.mostrarModal = true;
   }
+
+  guardarClase() {
+    this.service.guardarNuevaClase(this.claseNueva).subscribe({
+      next: (d) => console.log(d),
+      error: (e) => {
+        console.error(e);
+        this.router.navigate(["error"]);
+      },
+      complete: () => {
+        this.mostrarMensaje("Clase creada correctamente", "primary", "happy-outline");
+        this.cargarClases();
+        this.modal.dismiss(); // Cerrar el modal
+      }
+    });
+  }
+
 
 }

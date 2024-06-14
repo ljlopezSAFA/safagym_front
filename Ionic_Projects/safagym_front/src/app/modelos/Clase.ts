@@ -11,4 +11,6 @@ export class Clase{
   asistentes?:number;
   monitor?: Monitor;
   clientes?: Cliente[];
+  id_monitor?: number;
+
 }

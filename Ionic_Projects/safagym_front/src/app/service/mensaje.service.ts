@@ -14,15 +14,19 @@ export class MensajeService {
 
   constructor(private http: HttpClient, private loginService:LoginService) {}
 
-  listarPorReceptor(recetor:number, limit:number, offset:number): Observable<Mensaje[]> {
+  listarPorReceptorPaginado(recetor:number, limit:number, offset:number): Observable<Mensaje[]> {
     const options = this.loginService.autorizarPeticion();
     return this.http.get<Mensaje[]>(`${this.listurl}`+"?receptor="+recetor+"&limit="+limit+"&offset="+offset, options);
   }
 
+  listarPorReceptor(recetor:number, limit:number, offset:number): Observable<Mensaje[]> {
+    const options = this.loginService.autorizarPeticion();
+    return this.http.get<Mensaje[]>(`${this.listurl}`+"?receptor="+recetor+"&limit="+500+"&offset="+0, options);
+  }
 
   enviar(mensaje: EnvioMensaje):  Observable<any>{
     const options = this.loginService.autorizarPeticion();
-    return this.http.post(`${this.sendurl}`+"?XDEBUG_SESSION_START=11703",mensaje ,options)
+    return this.http.post(`${this.sendurl}`,mensaje ,options)
   }
 
 

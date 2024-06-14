@@ -1,1 +1,22 @@
 
+ion-card p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+ion-text small {
+  font-size: 0.7em;
+  color: gray;
+}
+
+.small-avatar {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px;
+}
+
+.input-container {
+  position: sticky;
+  bottom: 0;
+  background: #0d6891ff;
+  padding: 10px 0;
+}

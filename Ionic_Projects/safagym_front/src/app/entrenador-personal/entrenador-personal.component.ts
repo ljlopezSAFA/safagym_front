@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {InfiniteScrollCustomEvent, IonicModule} from "@ionic/angular";
 import {CommonModule} from "@angular/common";
 import {HeaderComponent} from "../header/header.component";
@@ -7,6 +7,7 @@ import {Monitor} from "../modelos/Monitor";
 import {MonitorService} from "../service/monitor.service";
 import {MensajeService} from "../service/mensaje.service";
 import {EnvioMensaje, Mensaje} from "../modelos/Mensaje";
+import {IonContent} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-entrenador-personal',
@@ -25,6 +26,7 @@ export class EntrenadorPersonalComponent  implements OnInit {
   offset:number;
   mensajes:Mensaje[] = [];
   texto:string = "";
+  @ViewChild('content') content!: IonContent;
 
   constructor(private serviceMonitor: MonitorService, private serviceMensaje: MensajeService) {
     this.limit = 10;
@@ -36,7 +38,9 @@ export class EntrenadorPersonalComponent  implements OnInit {
   ngOnInit() {
     this.getEntrenadorPersonal();
     this.getMensajes(false);
+    this.scrollToBottom();
   }
+
 
   getMensajes(adicionales: boolean) {
     if (!adicionales) {
@@ -45,16 +49,12 @@ export class EntrenadorPersonalComponent  implements OnInit {
     this.serviceMensaje.listarPorReceptor(this.receptor, this.limit, this.offset).subscribe({
       next: (l) => {
         l.forEach(m => this.mensajes.unshift(m));
-      }
+        this.scrollToBottom(); // Scroll to bottom after loading messages
+      },
+      error: (e) => console.error(e)
     });
   }
 
-  onIonInfinite(ev:InfiniteScrollCustomEvent) {
-    if(this.mensajes.length ==10){
-      this.offset = this.offset +10;
-      this.getMensajes(true);
-    }
-  }
 
   enviarMensaje(){
     if(this.texto != ""){
@@ -90,6 +90,14 @@ export class EntrenadorPersonalComponent  implements OnInit {
       },
       error: (e) => console.error(e),
     });
+  }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      this.content.scrollToBottom(300).then(() => {
+        console.log("Scrolled to bottom");
+      }).catch((err) => console.error("Scroll to bottom failed", err));
+    }, 100); // Add a small delay to ensure the view has fully rendered
   }
 
 }

@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Clase} from "../modelos/Clase";
 import {LoginService} from "./login.service";
-import {RegistroCliente} from "../modelos/RegistroCliente";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClaseService {
 
+  private baseUrl = environment.baseURL;
   private apiUrl = '/api/clase';
 
   constructor(private http: HttpClient, private loginService:LoginService) {}

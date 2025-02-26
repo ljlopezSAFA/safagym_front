@@ -10,7 +10,7 @@ import {EntrenadorPersonalComponent} from "./entrenador-personal/entrenador-pers
 
 export const routes: Routes = [
   {path: 'home',component:HomePage,},
-  {path: '',component:HomePage},
+  {path: '',component:LoginComponent,},
   {path: 'monitor',component:MonitorComponent},
   {path: 'clase',component:ClaseComponent},
   {path: 'login',component:LoginComponent},

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TEMA: El pecho como envase - Producción de leche materna -->
+    <title>El pecho como envase · Lactancia Materna</title>
+
+    <!-- Font Awesome 6 (iconos chulos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== ESTILOS COMPLETOS DE INDEX.HTML ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        /* Header principal */
+        .main-header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2.2em;
+        }
+
+        .main-header p {
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        /* HEADER SECUNDARIO */
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        /* Secciones de contenido */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #c94a6a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.8em;
+        }
+
+        /* Estilos del contenido principal */
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        /* ESTILOS NUEVOS: Iconos y cards */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .icon-card {
+            background: linear-gradient(145deg, #fff8fa, #ffeef0);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            flex: 1 1 180px;
+            box-shadow: 0 10px 20px rgba(201, 74, 106, 0.1);
+            border: 1px solid #fad1d8;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-8px);
+            background: #ffe2e8;
+        }
+
+        .icon-card i {
+            font-size: 2.8em;
+            color: #c94a6a;
+            margin-bottom: 15px;
+        }
+
+        .icon-card h3 {
+            color: #7a1f3d;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .icon-card p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        /* Cita destacada */
+        .quote-box {
+            background: #fae6ea;
+            border-left: 6px solid #c94a6a;
+            padding: 25px 30px;
+            border-radius: 12px 30px 30px 12px;
+            margin: 35px 0;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #5a1f2a;
+            box-shadow: 0 5px 0 rgba(122, 31, 61, 0.05);
+        }
+
+        .quote-box i {
+            color: #c94a6a;
+            margin-right: 10px;
+            font-size: 1.4em;
+        }
+
+        /* Tabla comparativa */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background-color: #7a1f3d;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f4b6c2;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: #fff4f7;
+        }
+
+        .comparison-table i {
+            margin-right: 8px;
+            color: #7a1f3d;
+        }
+
+        /* Timeline / línea de tiempo */
+        .timeline-lactancia {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            flex: 1 1 200px;
+            margin: 10px;
+            padding: 20px;
+            background: #fff4f7;
+            border-radius: 15px;
+            border-top: 6px solid #c94a6a;
+            text-align: center;
+        }
+
+        .timeline-item i {
+            font-size: 2em;
+            color: #7a1f3d;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h4 {
+            color: #5a1f2a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Estilo para details (mejorado con iconos) */
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.15em;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary i {
+            margin-right: 15px;
+            color: #c94a6a;
+            font-size: 1.3em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 4px solid #f4a6b8;
+        }
+
+        /* Imágenes - con bordes suaves */
+        img {
+            width: 100%;
+            max-width: 450px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(122, 31, 61, 0.15);
+            border: 3px solid white;
+        }
+
+        /* Listas con iconos */
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            display: flex;
+            align-items: baseline;
+        }
+
+        li i {
+            color: #7a1f3d;
+            margin-right: 12px;
+            font-size: 1.1em;
+            min-width: 20px;
+        }
+
+        li strong {
+            color: #7a1f3d;
+            margin-right: 5px;
+        }
+
+        /* Autores */
+        .authors {
+            background-color: #fff0f4;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3 {
+            color: #7a1f3d;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+
+            .menu-label {
+                display: flex;
+            }
+
+            .main-content {
+                grid-column: 1;
+                width: 100%;
+                padding: 20px;
+            }
+
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+
+            .main-content {
+                padding-top: 80px;
+            }
+
+            header {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+
+            .menu-label {
+                top: 15px;
+                left: 15px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .icon-container {
+                gap: 15px;
+            }
+
+            .icon-card {
+                flex: 1 1 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Checkbox para menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Botón menú móvil -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">
+    ☰
+</label>
+
+<!-- Menú lateral -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+    <header>
+        <h1><i class="fas fa-heart" style="font-size: 0.9em; margin-right: 10px;"></i> El pecho como envase: producción de leche materna</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <!-- INTRODUCCIÓN - Texto del documento -->
+        <h2 id="introduccion"><i class="fas fa-leaf" style="margin-right: 10px;"></i> Un sistema vivo e inteligente</h2>
+        <p>
+            La lactancia materna es un proceso biológico que permite al cuerpo de la mujer producir un alimento completo
+            y adaptado para el recién nacido. El pecho funciona como un sistema natural de producción, almacenamiento
+            y distribución de leche, que responde directamente a las necesidades del bebé. A diferencia de otros métodos
+            de alimentación, la leche materna se crea en el momento justo y con la composición adecuada para cada etapa
+            del desarrollo.
+        </p>
+
+
+        <!-- CITA DESTACADA -->
+        <div class="quote-box">
+            <i class="fas fa-quote-left"></i>
+            El pecho no es solo un depósito de leche, sino un órgano activo que se adapta continuamente.
+            <i class="fas fa-quote-right" style="float: right;"></i>
+        </div>
+
+        <!-- TARJETAS CON ICONOS - Conceptos clave -->
+        <div class="icon-container">
+            <div class="icon-card">
+                <i class="fas fa-flask"></i>
+                <h3>Oferta y demanda</h3>
+                <p>Cuanto más succiona el bebé, más leche se produce. Autorregulación perfecta.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-tint"></i>
+                <h3>Composición variable</h3>
+                <p>Cambia durante la toma, el día y la edad del bebé. Leche dinámica.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Anticuerpos</h3>
+                <p>Contiene defensas vivas que ninguna fórmula puede replicar.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-recycle"></i>
+                <h3>Ecológico</h3>
+                <p>Cero residuos, cero energía externa. El envase sostenible por excelencia.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: Anatomía y funcionamiento (con details) -->
+        <h2><i class="fas fa-brain"></i> Anatomía de un sistema perfecto</h2>
+
+        <details>
+            <summary><i class="fas fa-microscope"></i> Estructura de la glándula mamaria</summary>
+            <p><strong>Punto clave:</strong> La glándula mamaria está formada por estructuras llamadas lóbulos y alvéolos. En los alvéolos se produce la leche, que luego pasa a través de los conductos galactóforos hasta llegar al pezón.</p>
+            <p><strong>Desarrollo:</strong> Durante el embarazo estas estructuras se desarrollan gracias a los cambios hormonales, y tras el parto comienzan a funcionar de forma activa.</p>
+            <p><i class="fas fa-lightbulb" style="color: #c94a6a;"></i> <strong>Sabías que...</strong> Una glándula mamaria activa puede tener entre 15 y 20 lóbulos, cada uno con su propio conducto.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-droplet"></i> Hormonas: prolactina y oxitocina</summary>
+            <p><strong>Prolactina:</strong> Se encarga de fabricar la leche y aumenta cuando el bebé succiona el pecho. Es la hormona de la producción.</p>
+            <p><strong>Oxitocina:</strong> Permite que la leche salga hacia el pezón. Es la hormona del reflejo de eyección o "bajada de la leche".</p>
+            <p><strong>Dato:</strong> La oxitocina también se libera con el contacto piel con piel, la mirada del bebé o incluso su llanto.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-chart-line"></i> Sistema de oferta y demanda</summary>
+            <p><strong>Punto clave:</strong> Cuanto más mama el bebé, más leche produce el cuerpo de la madre. Por eso se dice que la lactancia funciona por un sistema de oferta y demanda.</p>
+            <p><strong>Autorregulación:</strong> El pecho se autorregula según la demanda. Si el bebé mama con frecuencia, el cuerpo aumenta la producción. Si las tomas disminuyen, la producción también baja.</p>
+        </details>
+
+
+        <!-- SECCIÓN 2: Composición y tipos de leche -->
+        <h2><i class="fas fa-flask"></i> Composición dinámica: no toda la leche es igual</h2>
+
+        <details>
+            <summary><i class="fas fa-water"></i> Variación durante la toma</summary>
+            <p><strong>Punto clave:</strong> Incluso durante una misma toma, la composición varía: al principio es más acuosa (leche inicial) y al final más rica en grasas (leche final). Esto permite que el bebé reciba primero hidratación y después energía.</p>
+            <p><strong>Consecuencia:</strong> Es importante no limitar el tiempo de toma; dejar que el bebé termine la primera mama antes de ofrecer la otra.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-calendar-alt"></i> Calostro, transición y leche madura</summary>
+            <p><strong>Calostro:</strong> En los primeros días tras el parto se produce el calostro, una leche espesa y amarillenta muy rica en anticuerpos. Es la primera vacuna del bebé.</p>
+            <p><strong>Leche de transición:</strong> Aparece alrededor del 5º-7º día, mezcla de calostro y leche madura.</p>
+            <p><strong>Leche madura:</strong> Más fluida y abundante, se estabiliza a partir de la segunda semana. Sigue cambiando según la edad del bebé.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-shield-virus"></i> Anticuerpos y componentes bioactivos</summary>
+            <p><strong>Punto clave:</strong> La leche materna está compuesta principalmente por agua, proteínas, grasas, lactosa, vitaminas, minerales y anticuerpos. Estos últimos son fundamentales para proteger al bebé frente a infecciones y enfermedades.</p>
+            <p><strong>Ninguna leche artificial</strong> puede reproducir exactamente esta combinación de nutrientes y defensas vivas.</p>
+        </details>
+
+        <!-- LÍNEA DE TIEMPO: evolución de la leche -->
+        <h3 style="color: #7a1f3d; margin-top: 40px;"><i class="fas fa-clock"></i> Evolución de la leche materna en el tiempo</h3>
+        <div class="timeline-lactancia">
+            <div class="timeline-item">
+                <i class="fas fa-hourglass-start"></i>
+                <h4>Calostro</h4>
+                <p>0-5 días<br> <span style="font-size: 0.9em;">Espeso, amarillo, rico en IgA</span></p>
+            </div>
+            <div class="timeline-item">
+                <i class="fas fa-hourglass-half"></i>
+                <h4>Transición</h4>
+                <p>5-15 días<br> <span style="font-size: 0.9em;">Aumenta lactosa y grasas</span></p>
+            </div>
+            <div class="timeline-item">
+                <i class="fas fa-hourglass-end"></i>
+                <h4>Leche madura</h4>
+                <p>+15 días<br> <span style="font-size: 0.9em;">Estable y dinámica</span></p>
+            </div>
+            <div class="timeline-item">
+                <i class="fas fa-child"></i>
+                <h4>+6 meses</h4>
+                <p>Se adapta<br> <span style="font-size: 0.9em;">Sigue siendo esencial</span></p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: Sostenibilidad y envase natural -->
+        <h2><i class="fas fa-globe-europe"></i> Un envase ecológico y sostenible</h2>
+
+        <p>
+            Además, el pecho puede considerarse un envase natural y ecológico. No necesita envases artificiales,
+            no genera residuos y no requiere energía externa para producir el alimento. Es un sistema sostenible,
+            seguro y siempre disponible.
+        </p>
+
+        <!-- TABLA COMPARATIVA: Pecho vs Fórmula -->
+        <table class="comparison-table">
+            <thead>
+            <tr>
+                <th><i class="fas fa-heart"></i> Pecho como envase</th>
+                <th><i class="fas fa-wine-bottle"></i> Alimentación artificial</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Temperatura perfecta siempre</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Requiere calentar/enfriar</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Cero residuos, cero plásticos</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Biberones, tetinas, latas, contaminación</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Agua incluida de forma natural</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Necesita agua potable (no siempre disponible)</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Producción bajo demanda, cero desperdicio</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Si sobra, se desecha; si falta, se tira</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Anticuerpos y células vivas</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Estéril, sin defensas</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!-- LISTA CON ICONOS: Beneficios como envase -->
+        <h2><i class="fas fa-gift"></i> El pecho como envase: características únicas</h2>
+
+        <ul>
+            <li><i class="fas fa-temperature-low"></i> <strong>Temperatura regulada:</strong> Siempre a 37°C, ideal para el bebé.</li>
+            <li><i class="fas fa-biohazard"></i> <strong>Esterilidad natural:</strong> La leche sale limpia, sin bacterias dañinas.</li>
+            <li><i class="fas fa-sync-alt"></i> <strong>Autorenovable:</strong> Se vacía y se vuelve a llenar constantemente.</li>
+            <li><i class="fas fa-hand-holding-heart"></i> <strong>Vínculo emocional:</strong> No es solo alimento, es contacto y apego.</li>
+            <li><i class="fas fa-infinity"></i> <strong>Disponibilidad total:</strong> Día y noche, sin depender de tiendas ni electricidad.</li>
+            <li><i class="fas fa-seedling"></i> <strong>Huella cero:</strong> No contamina, no deforesta, no usa combustibles.</li>
+        </ul>
+
+        <!-- CONCLUSIÓN (texto del documento) -->
+        <h2><i class="fas fa-star"></i> Conclusión: el envase vivo</h2>
+        <p>
+            En conclusión, el pecho de la mujer actúa como un envase vivo que produce un alimento perfectamente
+            adaptado al bebé. La producción de la leche materna es un ejemplo de cómo el cuerpo humano puede
+            responder de forma precisa y eficiente a las necesidades del recién nacido, garantizando su nutrición,
+            protección y desarrollo.
+        </p>
+
+        <!-- CITA FINAL -->
+        <div class="quote-box" style="background: #fadce0;">
+            <i class="fas fa-heart" style="color: #c94a6a;"></i>
+            El pecho es el primer envase del ser humano. El único que no necesita instrucciones, no caduca y está hecho de amor.
+        </div>
+
+    </main>
+
+    <!-- SECCIÓN DE AUTORES -->
+    <section class="content-section">
+        <div class="authors">
+            <h3><i class="fas fa-users"></i> Autores del Proyecto</h3>
+            <p><strong>Daniel Fernández Merchán</strong> · <strong>Juan Escribano Coto</strong> ·
+                <strong>Daniel Morillo Bermúdez</strong> · <strong>Marlo Juhani Jompero Angulo</strong></p>
+            <p>1º Desarrollo de Aplicaciones Multiplataforma · IES Universidad Laboral · 2025</p>
+            <p style="margin-top: 15px; font-style: italic; display: flex; align-items: center;">
+                <i class="fas fa-leaf" style="margin-right: 10px; color: #2e7d32;"></i>
+                "El envase más sostenible es el que ya viene con el alimento dentro."
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER (opcional, para mantener estilo) -->
+    <footer>
+        <p><i class="fas fa-copyright"></i> Proyecto Lactancia Materna · 1º DAM · 2025</p>
+        <p style="margin-top: 5px; opacity: 0.9;">Información basada en evidencia científica y recomendaciones OMS/UNICEF</p>
+    </footer>
+</div>
+</body>
+</html>

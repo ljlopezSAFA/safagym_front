@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bancos de leche materna · Lactancia Materna</title>
+    <!-- Font Awesome 6 (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== ESTILOS COMPLETOS (MISMA BASE) ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.1em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #f4a6b8;
+        }
+
+
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        li strong {
+            color: #7a1f3d;
+        }
+
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .authors, .info-box {
+            background-color: #fff0f4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3, .info-box h3 {
+            color: #7a1f3d;
+            margin-bottom: 10px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .process-step {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.08);
+            border-top: 5px solid #f4a6b8;
+            transition: transform 0.2s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-step h4 {
+            color: #7a1f3d;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-bottom: 4px solid #f4a6b8;
+        }
+
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #7a1f3d;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+            }
+            .menu-label {
+                display: flex;
+            }
+            .main-content {
+                grid-column: 1;
+                padding: 20px;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">☰</label>
+
+<!-- MENÚ LATERAL (CORREGIDO Y CERRADO) -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+    <div class="menu-content">
+        <div class="menu-section">
+            <h3 class="menu-section-title">Navegación Principal</h3>
+            <ul class="menu-links">
+                <li><a href="index.html">Página Principal</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<!-- FIN MENÚ LATERAL -->
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+    <header>
+        <h1><i class="fas fa-tint" style="margin-right: 10px;"></i> BANCOS DE LECHE MATERNA</h1>
+        <h2 style="color: #5a1f2a; border-bottom: none; margin-top: 5px;">DONAR LECHE ES DONAR VIDA</h2>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+        <p>Trabajo realizado por Daniel Fernández Merchán, Marlo Jompero Angulo, Juan Escribano Coto, Daniel Morillo Bermúdez en conjunto con el resto de alumnos de 1º de DAM</p>
+    </header>
+
+    <main>
+        <!-- ========== IMÁGENES REALES SOBRE BANCOS DE LECHE ========== -->
+
+        <!-- IMAGEN 1: FRASCOS DE LECHE MATERNA EN BANCO -->
+
+        <!-- INTRODUCCIÓN -->
+        <div class="info-box">
+            <p style="font-size: 1.1em; margin-bottom: 0;">
+                <strong>Los bancos de leche materna</strong> son servicios sanitarios especializados que recolectan, procesan,
+                almacenan y distribuyen leche humana donada para bebés prematuros o enfermos. <strong>Cada frasco salva vidas.</strong>
+            </p>
+        </div>
+
+        <!-- SECCIÓN 1: QUÉ SON -->
+        <h2><i class="fas fa-hospital"></i> 1. ¿QUÉ ES UN BANCO DE LECHE?</h2>
+
+        <!-- IMAGEN 2: INTERIOR DE UN BANCO DE LECHE - LABORATORIO -->
+
+        <details>
+            <summary><i class="fas fa-chart-bar"></i> DATOS ACTUALES (2026)</summary>
+            <p><strong>España:</strong> 23 bancos de leche activos · 1.200 donantes · 15.000 bebés beneficiados/año</p>
+            <p><strong>Mundo:</strong> Más de 700 bancos. Brasil: 224 bancos (red más grande del mundo)</p>
+        </details>
+
+        <!-- SECCIÓN 2: PROCESO DE DONACIÓN -->
+        <h2><i class="fas fa-clipboard-list"></i> 2. PROCESO DE DONACIÓN</h2>
+
+        <!-- IMAGEN 3: MADRE DONANTE EXTRANJÉNDOSE LECHE -->
+
+
+        <div class="process-grid">
+            <div class="process-step">
+                <h4>1. CRIBADO</h4>
+                <p>Análisis de sangre y entrevista. Requisitos: madre sana, excedente de leche.</p>
+            </div>
+            <div class="process-step">
+                <h4>2. EXTRACCIÓN</h4>
+                <p>Con sacaleches. Higiene estricta. Almacenamiento en frigorífico.</p>
+            </div>
+            <div class="process-step">
+                <h4>3. TRANSPORTE</h4>
+                <p>Recogida a domicilio o entrega en banco. Leche congelada.</p>
+            </div>
+            <div class="process-step">
+                <h4>4. ANÁLISIS</h4>
+                <p>Control microbiológico y nutricional.</p>
+            </div>
+            <div class="process-step">
+                <h4>5. PASTEURIZACIÓN</h4>
+                <p>Método Holder: 62,5°C, 30 min. Elimina virus/bacterias.</p>
+            </div>
+            <div class="process-step">
+                <h4>6. ALMACENAMIENTO</h4>
+                <p>Congelación a -20°C. Trazabilidad total.</p>
+            </div>
+            <div class="process-step">
+                <h4>7. PRESCRIPCIÓN</h4>
+                <p>Neonatólogo indica dosis para prematuros.</p>
+            </div>
+            <div class="process-step">
+                <h4>8. SEGUIMIENTO</h4>
+                <p>Control en UCIN del bebé receptor.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: RECEPTORES -->
+        <h2><i class="fas fa-baby"></i> 3. ¿QUIÉNES RECIBEN LA LECHE?</h2>
+
+        <!-- IMAGEN 4: BEBÉ PREMATURO EN INCUBADORA (UCIN) -->
+
+        <p style="text-align: center; font-style: italic; color: #7a1f3d;">⬆️ Bebé prematuro extremo: la leche donada es su medicina</p>
+
+        <details>
+            <summary><i class="fas fa-stethoscope"></i> PRIORIDAD MÉDICA</summary>
+            <p><strong>Receptores:</strong> Prematuros <1500g, bajo peso extremo, cirugía intestinal, cardiopatías, alergias graves a fórmula.</p>
+            <p><strong>Beneficio clave:</strong> Reduce hasta un 80% la enterocolitis necrosante.</p>
+        </details>
+
+        <!-- SECCIÓN 4: ALMACENAMIENTO Y TRAZABILIDAD -->
+        <h2><i class="fas fa-snowflake"></i> 4. ALMACENAMIENTO Y CONTROL</h2>
+
+        <!-- IMAGEN 5: CONGELADORES CON FRASCOS ETIQUETADOS -->
+
+        <p style="text-align: center; font-style: italic; color: #7a1f3d;">⬆️ Trazabilidad: cada frasco tiene un código único</p>
+
+
+        <!-- SECCIÓN 5: PASTEURIZACIÓN -->
+        <h2><i class="fas fa-flask"></i> 5. PASTEURIZACIÓN: SEGURIDAD TOTAL</h2>
+
+
+
+        <!-- SECCIÓN 6: RED DE BANCOS -->
+        <h2><i class="fas fa-globe"></i> 6. RED ESPAÑOLA E INTERNACIONAL</h2>
+
+
+        <div class="info-box">
+            <h3><i class="fas fa-map-marked-alt"></i> BANCOS EN ESPAÑA (2026)</h3>
+            <ul>
+                <li><strong>Madrid:</strong> H. 12 de Octubre, H. La Paz, H. Gregorio Marañón</li>
+                <li><strong>Cataluña:</strong> H. Vall d'Hebron, H. Sant Joan de Déu</li>
+                <li><strong>Andalucía:</strong> H. Virgen del Rocío, H. Reina Sofía, H. Regional de Málaga</li>
+                <li><strong>Valencia:</strong> H. La Fe, H. General</li>
+                <li><strong>Galicia:</strong> H. Clínico de Santiago, H. de Vigo</li>
+                <li><strong>País Vasco:</strong> H. Cruces, H. Donostia</li>
+                <li><strong>Castilla y León, Aragón, Baleares, Canarias...</strong></li>
+            </ul>
+        </div>
+
+        <!-- SECCIÓN 7: REQUISITOS DONANTE -->
+        <h2><i class="fas fa-check-circle"></i> 7. ¿PUEDO DONAR?</h2>
+
+
+        <details>
+            <summary><i class="fas fa-file-signature"></i> REQUISITOS BÁSICOS</summary>
+            <p>✔ Madre lactante con hijo <12 meses ✔ Excedente de leche ✔ Buena salud ✔ No enfermedades infecciosas ✔ Análisis negativo (VIH, hepatitis) ✔ No drogas, alcohol moderado</p>
+        </details>
+
+        <!-- SECCIÓN 8: MITOS -->
+        <h2><i class="fas fa-question-circle"></i> 8. MITOS Y REALIDADES</h2>
+
+        <ul style="background: #fff0f4; padding: 25px; border-radius: 15px; list-style: none;">
+            <li style="margin-bottom: 15px;"><strong style="color: #7a1f3d;">❌ MITO:</strong> "Mi bebé se quedará sin leche" → <strong>✅ REALIDAD:</strong> Solo se dona el excedente, la extracción estimula más producción.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #7a1f3d;">❌ MITO:</strong> "La leche donada no es segura" → <strong>✅ REALIDAD:</strong> Se analiza, pasteuriza y controla. Es un medicamento.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #7a1f3d;">❌ MITO:</strong> "Duele o es complicado" → <strong>✅ REALIDAD:</strong> Los bancos enseñan y prestan sacaleches.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #7a1f3d;">❌ MITO:</strong> "Venden la leche" → <strong>✅ REALIDAD:</strong> Donación altruista y gratuita. Nunca se comercia.</li>
+        </ul>
+
+        <!-- SECCIÓN 9: CÓMO AYUDAR -->
+        <h2><i class="fas fa-hands-helping"></i> 9. ¿CÓMO COLABORAR?</h2>
+
+
+        <ul>
+            <li><strong>Si eres madre lactante:</strong> Contacta con tu banco de leche más cercano.</li>
+            <li><strong>Si no puedes donar:</strong> Difunde información, voluntariado, donación económica a asociaciones.</li>
+            <li><strong>Profesionales sanitarios:</strong> Formación en lactancia y derivación a bancos.</li>
+        </ul>
+
+        <!-- CIERRE EMOCIONAL -->
+        <div style="background: #fdecef; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+            <p style="font-size: 1.3em; color: #7a1f3d; font-weight: bold;">"UN LITRO DE LECHE DONADA PUEDE ALIMENTAR A 8 PREMATUROS DURANTE UN DÍA"</p>
+            <p style="font-size: 1.1em;">Detrás de cada frasco hay una madre que dona vida.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p><i class="fas fa-copyright"></i> 202 6 · Lactancia Materna · 1º DAM </p>
+        <p style="margin-top: 5px;">Imágenes: Comunidad de Madrid, Hospital de Cruces, Oserhs, Osakidetza, Hospital de Denens</p>
+    </footer>
+</div>
+
+</body>
+</html>

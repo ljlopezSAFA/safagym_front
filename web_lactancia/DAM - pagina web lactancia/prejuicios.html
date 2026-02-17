@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prejuicios y Mitos sobre la Lactancia</title>
+
+    <style>
+        /* TODOS LOS ESTILOS SON EXACTAMENTE IGUALES A index.html */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo - EXACTAMENTE IGUAL */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil - EXACTAMENTE IGUAL */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            border-left: 6px solid #f4a6b8;
+            padding-left: 10px;
+        }
+
+        p {
+            line-height: 1.7;
+        }
+
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 18px 0;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+        }
+
+        details p {
+            margin-top: 10px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 450px;
+            display: block;
+            margin: 25px auto;
+            border-radius: 12px;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* RESPONSIVE - EXACTAMENTE IGUAL */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+
+            .menu-label {
+                display: flex;
+            }
+
+            .main-content {
+                grid-column: 1;
+                width: 100%;
+                padding: 20px;
+            }
+
+            /* Checkbox hack */
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+
+            .main-content {
+                padding-top: 80px;
+            }
+
+            header {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+
+            .menu-label {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            header {
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Checkbox para controlar menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Label que actúa como botón del menú -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">
+    ☰
+</label>
+
+<!-- Menú lateral - EXACTAMENTE IGUAL AL DE index.html -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- Contenido principal -->
+<div class="main-content">
+    <header>
+        <h1>Prejuicios Sociales y Mitos en Torno a la Lactancia</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <h2 id="prejuicios-mitos">Introducción</h2>
+        <p>
+            La lactancia materna es un proceso biológico natural, pero está rodeado de una gran cantidad
+            de creencias culturales, prejuicios y mitos que pueden influir en la decisión y experiencia
+            de las madres. Estos mitos, a menudo transmitidos de generación en generación o reforzados
+            por la publicidad y la falta de información, pueden crear barreras para una lactancia exitosa.
+        </p>
+
+
+        <h2>Mitos Comunes y su Realidad Científica</h2>
+
+        <details>
+            <summary>1. "Muchas mujeres no producen suficiente leche"</summary>
+            <p><strong>Mito:</strong> Es una de las preocupaciones más frecuentes y una causa común de abandono temprano.</p>
+            <p><strong>Realidad:</strong> La verdadera insuficiencia de leche es rara y afecta a un pequeño porcentaje de mujeres por causas médicas. La producción de leche se rige por la ley de la oferta y la demanda: cuanto más se amamanta o se extrae leche, más se produce.</p>
+        </details>
+
+        <details>
+            <summary>2. "Dar el pecho duele" / "Es normal que duela"</summary>
+            <p><strong>Mito:</strong> Se acepta el dolor como una parte inevitable de la lactancia.</p>
+            <p><strong>Realidad:</strong> Una ligera incomodidad al inicio puede ser normal, pero el dolor agudo, las grietas o los pezones sangrantes no son normales. Suelen deberse a un mal agarre del bebé y requieren corrección o evaluación profesional.</p>
+        </details>
+
+        <details>
+            <summary>3. "La lactancia prolongada malcría al niño o crea dependencia excesiva"</summary>
+            <p><strong>Mito:</strong> Amamantar más allá de cierta edad se considera perjudicial.</p>
+            <p><strong>Realidad:</strong> La OMS recomienda lactancia exclusiva hasta los seis meses y continuarla junto a otros alimentos hasta los dos años o más. Desde un punto de vista biológico y evolutivo es completamente normal y favorece la seguridad emocional.</p>
+        </details>
+
+        <details>
+            <summary>4. "La leche materna después del año es agua"</summary>
+            <p><strong>Mito:</strong> Se cree que pierde sus propiedades nutritivas.</p>
+            <p><strong>Realidad:</strong> La leche materna se adapta al crecimiento del niño, puede aumentar su contenido graso y sigue siendo rica en anticuerpos, proteínas y calorías.</p>
+        </details>
+
+        <details>
+            <summary>5. "Para producir buena leche hay que tomar leche de vaca o evitar ciertos alimentos"</summary>
+            <p><strong>Mito:</strong> La dieta materna determina directamente la calidad de la leche.</p>
+            <p><strong>Realidad:</strong> Salvo casos extremos, el cuerpo produce leche de excelente calidad con una dieta variada y equilibrada. Algunos alimentos solo modifican ligeramente el sabor.</p>
+        </details>
+
+        <details>
+            <summary>6. "Los bebés amamantados necesitan agua, especialmente en verano"</summary>
+            <p><strong>Mito:</strong> La leche materna no hidrata lo suficiente.</p>
+            <p><strong>Realidad:</strong> La leche materna es aproximadamente un 88% agua. Durante los primeros seis meses no es necesario ofrecer agua ni otras bebidas.</p>
+        </details>
+
+        <details>
+            <summary>7. "Los hombres no pueden o no deben participar en el cuidado del bebé"</summary>
+            <p><strong>Mito:</strong> La lactancia excluye al padre u otra figura parental.</p>
+            <p><strong>Realidad:</strong> La pareja cumple un papel fundamental ofreciendo apoyo emocional, ayuda doméstica y cuidado del bebé en otros aspectos.</p>
+        </details>
+
+
+        <h2>Prejuicios Sociales</h2>
+
+        <details>
+            <summary>1. Sexualización del pecho femenino</summary>
+            <p>La sociedad prioriza una visión sexual del pecho, lo que genera incomodidad y censura hacia la lactancia en público.</p>
+        </details>
+
+        <details>
+            <summary>2. La "buena madre" frente a la madre que no se sacrifica</summary>
+            <p>Existe una presión constante que genera culpa y ansiedad, juzgando cualquier decisión tomada por la madre.</p>
+        </details>
+
+        <details>
+            <summary>3. La lactancia como un tema privado e íntimo</summary>
+            <p>Para normalizar la lactancia y permitir la conciliación social y laboral, debe ser aceptada en cualquier lugar y momento.</p>
+        </details>
+
+        <details>
+            <summary>4. El mito de la liberación a través del biberón</summary>
+            <p>La verdadera liberación reside en poder elegir con información veraz y con apoyo social, independientemente del método de alimentación.</p>
+        </details>
+
+        <h2>Consecuencias de los Mitos y Prejuicios</h2>
+        <ul>
+            <li>Abandono precoz de la lactancia.</li>
+            <li>Angustia y culpa materna.</li>
+            <li>Pérdida de beneficios para la salud pública.</li>
+            <li>Persistencia de desigualdades de género.</li>
+        </ul>
+
+        <h2>Cómo Combatirlos</h2>
+        <ul>
+            <li>Educación basada en evidencia científica desde el embarazo.</li>
+            <li>Apoyo entre pares y profesionales especializados.</li>
+            <li>Normalización social mediante campañas y legislación.</li>
+            <li>Uso de un lenguaje inclusivo y respetuoso.</li>
+        </ul>
+    </main>
+</div>
+</body>
+</html>

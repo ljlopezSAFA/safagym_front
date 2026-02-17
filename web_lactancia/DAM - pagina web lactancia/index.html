@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lactancia Materna - Página Principal</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fdecef;
+      color: #4a2c2a;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+
+    /* Menú lateral fijo */
+    .side-menu {
+      background-color: #7a1f3d;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      overflow-y: auto;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .menu-header {
+      background-color: #5a1f2a;
+      padding: 25px 20px;
+      color: white;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+
+    .menu-header h2 {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+    }
+
+    .menu-header p {
+      font-size: 0.8em;
+      opacity: 0.9;
+    }
+
+    .menu-content {
+      padding: 20px 0;
+    }
+
+    .menu-section {
+      margin-bottom: 20px;
+    }
+
+    .menu-section-title {
+      color: #f4a6b8;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .menu-links {
+      list-style: none;
+    }
+
+    .menu-links li {
+      margin: 5px 0;
+    }
+
+    .menu-links a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      transition: all 0.2s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .menu-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left-color: #f4a6b8;
+      padding-left: 25px;
+    }
+
+    .menu-links a.active {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-left-color: #f4a6b8;
+      font-weight: 600;
+    }
+
+    /* Checkbox hack para menú móvil */
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-label {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #7a1f3d;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      cursor: pointer;
+      z-index: 102;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .menu-label:hover {
+      background-color: #5a1f2a;
+      transform: scale(1.05);
+    }
+
+    /* Contenido principal */
+    .main-content {
+      grid-column: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+      width: 100%;
+    }
+
+    /* Header principal */
+    .main-header {
+      background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 30px;
+    }
+
+    .main-header h1 {
+      margin: 0;
+      color: #5a1f2a;
+      font-size: 2.2em;
+    }
+
+    .main-header p {
+      margin-top: 15px;
+      font-size: 1.1em;
+    }
+
+    /* Secciones de contenido */
+    .content-section {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      color: #c94a6a;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #f4a6b8;
+      font-size: 1.8em;
+    }
+
+    /* Grid de temas */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .topic-card {
+      background: linear-gradient(145deg, #fff0f4, #ffe6ec);
+      border: 1px solid #f4b6c2;
+      border-radius: 10px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(201, 74, 106, 0.15);
+      border-color: #c94a6a;
+    }
+
+    .topic-card h3 {
+      color: #7a1f3d;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .topic-card p {
+      color: #5a4a4a;
+      line-height: 1.6;
+    }
+
+    .highlight-card {
+      background: linear-gradient(145deg, #f8e1e7, #f4d1da);
+      border: 2px solid #c94a6a;
+    }
+
+    /* ========== SECCIÓN MULTIMEDIA ========== */
+    .multimedia-section {
+      margin-top: 40px;
+    }
+
+    .multimedia-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #f4a6b8;
+      padding-bottom: 10px;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      background: none;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      color: #7a1f3d;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active {
+      background-color: #f4a6b8;
+      color: white;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background-color: #fff0f4;
+    }
+
+    .resources-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .resource-card {
+      background: linear-gradient(145deg, #fff5f7, #ffebf0);
+      border: 2px solid #f4b6c2;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(201, 74, 106, 0.15);
+      border-color: #c94a6a;
+    }
+
+    .resource-icon {
+      font-size: 2em;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .pdf-icon {
+      color: #d35400;
+    }
+
+    .video-icon {
+      color: #2980b9;
+    }
+
+    .ppt-icon {
+      color: #c44a36; /* Color característico para PowerPoint */
+    }
+
+    .resource-card h4 {
+      color: #7a1f3d;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      min-height: 60px;
+    }
+
+    .resource-card p {
+      color: #7a4a4a;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .resource-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid #f4b6c2;
+      font-size: 0.85em;
+    }
+
+    .file-size {
+      color: #d35400;
+      font-weight: 600;
+    }
+
+    .duration {
+      color: #2980b9;
+      font-weight: 600;
+    }
+
+    .slides-count {
+      color: #c44a36;
+      font-weight: 600;
+    }
+
+    .open-link {
+      color: #7a1f3d;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .open-link::after {
+      content: "→";
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+
+    .resource-card:hover .open-link::after {
+      transform: translateX(5px);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Contador de recursos */
+    .resource-count {
+      background-color: #7a1f3d;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-left: 10px;
+    }
+
+    /* Imágenes */
+    .main-image {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 30px auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #7a1f3d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .authors {
+      background-color: #fff0f4;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border-left: 5px solid #f4a6b8;
+    }
+
+    .authors h3 {
+      color: #7a1f3d;
+      margin-bottom: 10px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      body {
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+      }
+
+      .side-menu {
+        position: fixed;
+        left: -280px;
+        transition: left 0.3s ease;
+        z-index: 100;
+      }
+
+      .menu-label {
+        display: flex;
+      }
+
+      .main-content {
+        grid-column: 1;
+        width: 100%;
+        padding: 20px;
+      }
+
+      /* Checkbox hack */
+      #menu-toggle:checked ~ .side-menu {
+        left: 0;
+      }
+
+      #menu-toggle:checked ~ .menu-label::after {
+        content: "✕";
+      }
+
+      #menu-toggle:checked ~ .main-content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+      }
+
+      .main-content {
+        padding-top: 80px;
+      }
+
+      .main-header {
+        margin-top: 20px;
+      }
+
+      .topic-grid,
+      .resources-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .side-menu {
+        width: 250px;
+        left: -250px;
+      }
+
+      .menu-label {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+      }
+
+      .content-section {
+        padding: 20px;
+      }
+
+      .main-header {
+        padding: 30px 15px;
+      }
+
+      .main-header h1 {
+        font-size: 1.8em;
+      }
+
+      .resources-container {
+        grid-template-columns: 1fr;
+      }
+
+      .multimedia-tabs {
+        flex-direction: column;
+      }
+
+      .tab-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .side-menu {
+        width: 100%;
+        left: -100%;
+      }
+
+      #menu-toggle:checked ~ .side-menu {
+        left: 0;
+      }
+
+      .section-title {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<!-- Checkbox para controlar menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Label que actúa como botón del menú -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">
+  ☰
+</label>
+
+<!-- Menú lateral -->
+<aside class="side-menu">
+  <div class="menu-header">
+    <h2>Lactancia Materna</h2>
+    <p>Temas Relacionados</p>
+  </div>
+
+  <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html" class="active">Página Principal</a></li>
+      </ul>
+  </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">Autores</h3>
+      <ul class="menu-links" style="font-size: 0.85em;">
+        <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<!-- Contenido principal -->
+<div class="main-content">
+  <header class="main-header">
+    <h1>Lactancia Materna: Guía Completa</h1>
+    <p>Explora todos los aspectos de la lactancia materna desde diferentes perspectivas</p>
+  </header>
+
+  <section class="content-section">
+    <h2 class="section-title">Bienvenido a nuestro estudio sobre Lactancia Materna</h2>
+
+    <img src="fotosweb/mujer1.png"
+         alt="Madre amamantando" class="main-image">
+
+    <p>La lactancia materna es uno de los procesos biológicos más importantes y complejos en el desarrollo humano.
+      Esta página web reúne información científica, sociológica y antropológica sobre todos los aspectos
+      relacionados con la lactancia materna.</p>
+
+    <p>Desde los beneficios para la salud hasta los desafíos sociales, nuestro objetivo es proporcionar
+      información completa y basada en evidencia para padres, profesionales de la salud y cualquier persona
+      interesada en este tema fundamental.</p>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-title">Temas Destacados</h2>
+
+    <div class="topic-grid">
+      <a href="prejuicios.html" class="topic-card highlight-card">
+        <h3>Prejuicios Sociales y Mitos</h3>
+        <p>Descubre los mitos más comunes sobre la lactancia materna y la realidad científica detrás de ellos.
+          Un análisis detallado de los prejuicios sociales que afectan a las madres lactantes.</p>
+        <p style="color: #7a1f3d; font-weight: 600; margin-top: 10px;">Haz clic para explorar este tema</p>
+      </a>
+
+      <a href="#" class="topic-card">
+        <h3>Lactancia y Sostenibilidad</h3>
+        <p>Analiza el impacto ambiental de la lactancia materna y su contribución a un desarrollo sostenible
+          y respetuoso con el medio ambiente.</p>
+      </a>
+
+      <a href="#" class="topic-card">
+        <h3>Beneficios para la Salud</h3>
+        <p>Explora cómo la lactancia materna beneficia tanto al bebé como a la madre, reduciendo riesgos
+          de enfermedades y promoviendo el desarrollo óptimo.</p>
+      </a>
+
+      <a href="#" class="topic-card">
+        <h3>Aspectos Antropológicos</h3>
+        <p>Estudia la evolución de la lactancia a lo largo de la historia humana y sus diferentes prácticas
+          en diversas culturas alrededor del mundo.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN DE RECURSOS MULTIMEDIA ========== -->
+  <section class="content-section multimedia-section">
+    <h2 class="section-title">📚 Recursos Multimedia</h2>
+    <p>Accede a nuestra colección completa de recursos educativos sobre lactancia materna. Haz clic en cualquier recurso para abrirlo en una nueva pestaña.</p>
+
+    <!-- Pestañas -->
+    <div class="multimedia-tabs">
+      <button class="tab-btn active" onclick="showTab('pdfs')">
+        📄 Documentos PDF
+        <span class="resource-count">14</span>
+      </button>
+      <button class="tab-btn" onclick="showTab('videos')">
+        🎬 Videos Educativos
+        <span class="resource-count">9</span>
+      </button>
+      <button class="tab-btn" onclick="showTab('presentaciones')">
+        📊 Presentaciones
+        <span class="resource-count">7</span>
+      </button>
+    </div>
+
+    <!-- Contenido de PDFs -->
+    <div id="pdfs" class="tab-content active">
+      <div class="resources-container">
+        <!-- PDF 1 -->
+        <a href="Recursos/Poster/Alimentación%20sana%20en%20la%20lactancia.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Alimentación sana en la lactancia</h4>
+          <p>Información alimenticia durante la lactancia</p>
+          <div class="resource-meta">
+            <span class="file-size">2.57 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 2 -->
+        <a href="Recursos/Poster/Bancos%20de%20leche%20materna%20Donación%20.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Bancos de donación de leche materna</h4>
+          <p>Información sobre bancos de donación de leche materna</p>
+          <div class="resource-meta">
+            <span class="file-size">40.4 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 3 -->
+        <a href="Recursos\Poster\dar el pecho y CI.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Dar el pecho y la Inteligencia del lactante</h4>
+          <p>Información sobre dar el pecho y la relación con la inteligencia del lactante</p>
+          <div class="resource-meta">
+            <span class="file-size">31.1 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 4 -->
+        <a href="Recursos\Poster\El pecho femenino como envase (enfoque anatómico).pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>El pecho femenino como envase</h4>
+          <p>Información sobre cómo el pecho femenino funciona, desde la anatomía, como un envase natural para la leche materna.</p>
+          <div class="resource-meta">
+            <span class="file-size">307 KB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 5 -->
+        <a href="Recursos\Poster\Enfermedades y beneficios lactancia.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Enfermedades y beneficios en la lactancia</h4>
+          <p>Información sobre cómo la lactancia tiene beneficios tanto como para la madre como para el lactante.</p>
+          <div class="resource-meta">
+            <span class="file-size">135 KB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 6 -->
+        <a href="Recursos\Poster\La lactancia materna y el CO₂.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>La lactancia materna y el CO2</h4>
+          <p>Información sobre cómo la lactancia reduce la huella de carbono.</p>
+          <div class="resource-meta">
+            <span class="file-size">0.98 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 7 -->
+        <a href="Recursos\Poster\Lactancia desarrollados y en desarrollo.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Calidad de la lactancia en paises desarrollados vs subdesarrollados</h4>
+          <p>Comparativa de lactancia en diferentes contextos socioeconómicos.</p>
+          <div class="resource-meta">
+            <span class="file-size">249 KB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 8 -->
+        <a href="Recursos\Poster\lactancia inducida.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Lactancia Inducida</h4>
+          <p>Guía sobre la lactancia en casos de adopción, relactación y madres no biológicas.</p>
+          <div class="resource-meta">
+            <span class="file-size">50 KB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 9 -->
+        <a href="Recursos\Poster\Lactancia Materna Historia y Evolucion.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>La historia y evolución de la leche materna</h4>
+          <p>Información sobre la historia y evolución de la leche materna.</p>
+          <div class="resource-meta">
+            <span class="file-size">407 KB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 10 -->
+        <a href="Recursos\Poster\Lactancia materna y cáncer.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>La lactancia materna y cáncer</h4>
+          <p>La relación con la lactancia materna y el cáncer</p>
+          <div class="resource-meta">
+            <span class="file-size">22.2 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 11 -->
+        <a href="Recursos\Poster\Mitos y prejuicios de la lactancia.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Mitos y prejuicios de la lactancia</h4>
+          <p>Información sobre mitos y prejuicios de la lactancia.</p>
+          <div class="resource-meta">
+            <span class="file-size">3.13 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 12 -->
+        <a href="Recursos\Poster\Patologías.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Patologías en la lactancia.</h4>
+          <p>Información sobre patologías en la lactancia.</p>
+          <div class="resource-meta">
+            <span class="file-size">1.85 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 13 -->
+        <a href="Recursos\Poster\Pérdida de un lactante El duelo de la madre.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>El duelo de la madre en la pérdida del lactante</h4>
+          <p>Información sobre el duelo de la madre cuando se produce la perdida del lactante</p>
+          <div class="resource-meta">
+            <span class="file-size">1.64 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+
+        <!-- PDF 14 -->
+        <a href="Recursos\Poster\Prejuicios sociales y mitos entorno a la lactancia.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon pdf-icon">📄</div>
+          <h4>Prejuicios sociales y mitos en torno a la lactancia</h4>
+          <p>Información sobre prejuicios sociales y mitos en torno a la lactancia</p>
+          <div class="resource-meta">
+            <span class="file-size">10.7 MB</span>
+            <span class="open-link">Abrir PDF</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contenido de Videos -->
+    <div id="videos" class="tab-content">
+      <div class="resources-container">
+        <!-- Video 1 -->
+        <a href="Recursos/Videos/00-Presentación.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Presentación</h4>
+          <p>Presentación</p>
+          <div class="resource-meta">
+            <span class="duration">3:28 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 2 -->
+        <a href="Recursos\Videos\Antropologia e Historia.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Antropología e historia en torno a la lactancia</h4>
+          <p>Video que habla sobre la historia de la lactancia.</p>
+          <div class="resource-meta">
+            <span class="duration">3:04 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 3 -->
+        <a href="Recursos\Videos\BancosLeche.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Bancos de leche</h4>
+          <p>Video que trata sobre los bancos de leche</p>
+          <div class="resource-meta">
+            <span class="duration">2:16 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 4 -->
+        <a href="Recursos\Videos\Beneficios Bebe.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Beneficios del bebe</h4>
+          <p>Video que explica los beneficios que aporta la lactancia al bebe.</p>
+          <div class="resource-meta">
+            <span class="duration">2:14 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 5 -->
+        <a href="Recursos\Videos\Beneficios Madre.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Beneficios de la madre</h4>
+          <p>Beneficios de la madre durante la lactancia.</p>
+          <div class="resource-meta">
+            <span class="duration">4:35 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 6 -->
+        <a href="Recursos\Videos\Duelo -Lactancia.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Duelo - video 1</h4>
+          <p>Duelo.</p>
+          <div class="resource-meta">
+            <span class="duration">4:19 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 7 -->
+        <a href="Recursos\Videos\Duelo -Lactancia2.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Duelo - video 2</h4>
+          <p>Duelo.</p>
+          <div class="resource-meta">
+            <span class="duration">2:14 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 8 -->
+        <a href="Recursos\Videos\El papel del entorno en la lactancia materna.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>El papel del entorno durante la lactancia materna</h4>
+          <p>Video sobre el papel que juega el entorno durante la lactancia materna.</p>
+          <div class="resource-meta">
+            <span class="duration">2:07 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+
+        <!-- Video 9 -->
+        <a href="Recursos\Videos\Envase.mp4" target="_blank" class="resource-card">
+          <div class="resource-icon video-icon">🎬</div>
+          <h4>Envase</h4>
+          <p>Video sobre la producción de leche materna.</p>
+          <div class="resource-meta">
+            <span class="duration">3:05 min</span>
+            <span class="open-link">Ver Video</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ========== NUEVA PESTAÑA DE PRESENTACIONES ========== -->
+    <div id="presentaciones" class="tab-content">
+      <div class="resources-container">
+        <!-- Presentación 1 -->
+        <a href="Recursos/Presentaciones/Acercándonos%20a%20la%20lactancia-Hidalgo%20Casado%20Antonio%20Javier.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Acercándonos a la lactancia</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 2 -->
+        <a href="Recursos/Presentaciones/Beneficios%20para%20el%20lactante-AdrianaGarcia.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Beneficios para el lactante</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 3 -->
+        <a href="Recursos/Presentaciones/Beneficios%20para%20la%20madre%20CARLOSMARTELO.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Beneficios para la madre</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 4 -->
+        <a href="Recursos/Presentaciones/Beneficios%20para%20la%20salud%20del%20lactante%20Patologías%20y%20enfermedades%20infantiles%20-%20Marta%20Nuñez%20Navarro.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Beneficios para la salud del lactante</h4>
+          <p>Patologías y enfermedades infantiles</p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 5 -->
+        <a href="Recursos/Presentaciones/Beneficios%20para%20la%20salud%20del%20lactante-%20pablo.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Beneficios para la salud del lactante</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 6 -->
+        <a href="Recursos/Presentaciones/El%20pecho%20de%20una%20mujer%20como%20envase%20-%20Antonio%20Calderón.pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Antropología e El pecho de la mujer como envase</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+
+        <!-- Presentación 7 -->
+        <a href="Recursos/Presentaciones/Lactancia%20en%20países%20desarrollados%20vs%20subdesarrollados-David%20López%20(2).pdf" target="_blank" class="resource-card">
+          <div class="resource-icon ppt-icon">📊</div>
+          <h4>Lactancia en países desarrollados vs subdesarrollados</h4>
+          <p></p>
+          <div class="resource-meta">
+            <span class="open-link">Ver PPT</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="authors">
+      <h3>Autores del Proyecto</h3>
+      <p><strong>Daniel Fernández Merchán</strong> · <strong>Juan Escribano Coto</strong> ·
+        <strong>Daniel Morillo Bermúdez</strong> · <strong>Marlo Juhani Jompero Angulo</strong></p>
+      <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Función para cambiar entre pestañas
+  function showTab(tabId) {
+    // Ocultar todas las pestañas
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Quitar clase active de todos los botones
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    tabButtons.forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Mostrar la pestaña seleccionada
+    document.getElementById(tabId).classList.add('active');
+
+    // Activar el botón correspondiente
+    document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+  }
+</script>
+</body>
+</html>

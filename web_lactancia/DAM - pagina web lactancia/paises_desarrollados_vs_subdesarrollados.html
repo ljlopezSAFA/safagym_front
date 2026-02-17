@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TÍTULO ESPECÍFICO: PAÍSES DESARROLLADOS Y SUBDESARROLLADOS -->
+    <title>Lactancia · Países desarrollados vs subdesarrollados</title>
+
+    <style>
+        /* ===== ESTILOS COMPLETOS (MISMA BASE) ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        /* Header principal */
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        /* main = fondo blanco */
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        /* Estilos para details/summary */
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.1em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #f4a6b8;
+        }
+
+        details p:last-child {
+            margin-bottom: 5px;
+        }
+
+        details strong {
+            color: #7a1f3d;
+        }
+
+        /* Imágenes */
+        img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Listas */
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        li strong {
+            color: #7a1f3d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Autores y sección extra */
+        .authors, .paradox-box, .concept-box {
+            background-color: #fff0f4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3, .paradox-box h3, .concept-box h3 {
+            color: #7a1f3d;
+            margin-bottom: 10px;
+        }
+
+        /* Iconos sencillos (tipográficos) */
+        .icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+            color: #7a1f3d;
+        }
+
+        hr {
+            margin: 40px 0 20px;
+            border: 1px dashed #f4a6b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+            .menu-label {
+                display: flex;
+            }
+            .main-content {
+                grid-column: 1;
+                width: 100%;
+                padding: 20px;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+            .main-content {
+                padding-top: 80px;
+            }
+            header {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+            .menu-label {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+            main {
+                padding: 20px;
+            }
+            header {
+                padding: 25px 15px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Checkbox menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Botón menú móvil -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">☰</label>
+
+<!-- MENÚ LATERAL (exactamente igual, con clase active en la página actual) -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+
+    <header>
+        <h1><i class="fas fa-baby" style="margin-right: 10px;"></i> Lactancia en países desarrollados y subdesarrollados</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <!-- ========== INICIO DEL CONTENIDO ESPECÍFICO ========== -->
+
+        <!-- Imagen representativa: maternidad / contraste global (uso imagen libre de derechos, solo ilustrativa) -->
+
+
+        <h2>📊 1. Prevalencia y duración</h2>
+
+        <details>
+            <summary>🧾 Países subdesarrollados</summary>
+            <p><strong>Inicio:</strong> Tasas altas (>90%), práctica tradicional y vital.</p>
+            <p><strong>Lactancia exclusiva (0-6 meses):</strong> Variable, a menudo por debajo del 50% (OMS/UNICEF). Influyen la introducción temprana de agua/tés, desinformación y marketing de fórmula.</p>
+            <p><strong>Duración:</strong> Suele extenderse más allá de 2 años, sobre todo en áreas rurales.</p>
+        </details>
+
+        <details>
+            <summary>🏙️ Países desarrollados</summary>
+            <p><strong>Inicio:</strong> Tasas altas al nacer (>80%) gracias a la promoción hospitalaria.</p>
+            <p><strong>Lactancia exclusiva (0-6 meses):</strong> Generalmente más baja que en países en desarrollo. En UE y EE.UU. rara vez supera el 30%. Abandono precoz.</p>
+            <p><strong>Duración:</strong> Más corta. Lactancia prolongada (>1 año) es menos común y a veces estigmatizada.</p>
+        </details>
+
+        <h2>⚖️ 2. Contexto y significado</h2>
+        <details>
+            <summary>🌱 Subdesarrollados: cuestión de vida o muerte</summary>
+            <p><strong>Salud pública crucial:</strong> Protege contra diarrea, neumonía, desnutrición. Es el alimento más seguro en entornos con agua contaminada y pobreza.</p>
+            <p><strong>Seguridad alimentaria:</strong> Garantiza nutrición básica incluso en escasez.</p>
+            <p><strong>Práctica cultural:</strong> Profundamente arraigada, aunque persisten mitos (p. ej., «leche débil»).</p>
+        </details>
+        <details>
+            <summary>💡 Desarrollados: elección de salud y estilo de vida</summary>
+            <p><strong>Beneficios a largo plazo:</strong> Vínculo emocional, reducción de alergias, obesidad, enfermedades crónicas (bebé y madre).</p>
+            <p><strong>Conveniencia y ecología:</strong> Ahorro económico, ausencia de residuos.</p>
+            <p><strong>Presión social y "Mommy Wars":</strong> Idealización vs. practicidad, juicios intensos en contexto de individualismo.</p>
+        </details>
+
+        <h2>🧱 3. Principales desafíos y barreras</h2>
+        <details>
+            <summary>⚠️ Subdesarrollados</summary>
+            <p><strong>Marketing agresivo de fórmula:</strong> Violaciones del Código Internacional (OMS, 1981). Muestras gratuitas que socavan la lactancia.</p>
+            <p><strong>Falta de apoyo sistemático:</strong> Carencia de asesoría postparto, licencias de maternidad cortas o inexistentes, hospitales no IHAN.</p>
+            <p><strong>Pobreza:</strong> Desnutrición materna, necesidad de trabajar pronto, falta de entornos privados.</p>
+            <p><strong>Creencias culturales:</strong> Introducción precoz de líquidos/alimentos, percepción de leche «insuficiente».</p>
+        </details>
+        <details>
+            <summary>🏢 Desarrollados</summary>
+            <p><strong>Barreras estructurales:</strong> Licencias de maternidad breves (EE.UU.), difícil conciliación, falta de espacios de extracción.</p>
+            <p><strong>Medicalización del parto:</strong> Separación madre-bebé, suplementos innecesarios, falta de apoyo al agarre.</p>
+            <p><strong>Falta de formación profesional:</strong> Personal sanitario con conocimientos desactualizados.</p>
+            <p><strong>Estigma social:</strong> Lactancia en público mal vista; prolongada poco comprendida.</p>
+            <p><strong>Presión comercial:</strong> Promoción de fórmula como «casi igual».</p>
+        </details>
+
+        <h2>🏛️ 4. Políticas de apoyo</h2>
+        <details>
+            <summary>🌐 Subdesarrollados</summary>
+            <p><strong>Enfoque supervivencia infantil:</strong> Programas OMS/UNICEF (Hospital Amigo del Niño), trabajadores comunitarios.</p>
+            <p><strong>Regulación del marketing:</strong> Crucial pero aplicación débil. Brasil destaca con leyes fuertes.</p>
+            <p><strong>Transferencias condicionadas:</strong> Beneficios a madres que acuden a controles y lactan.</p>
+        </details>
+        <details>
+            <summary>🇪🇺 Desarrollados</summary>
+            <p><strong>Licencias pagadas:</strong> Clave del éxito; países nórdicos tienen las tasas más altas.</p>
+            <p><strong>Leyes de conciliación:</strong> Derecho a pausas para extracción en trabajo.</p>
+            <p><strong>Protección en público:</strong> Leyes que amparan la lactancia.</p>
+            <p><strong>Sistemas de salud:</strong> Consultas con lactanciólogos, bancos de leche para prematuros.</p>
+        </details>
+
+        <h2>🔄 5. Tendencias recientes y paradojas</h2>
+        <!-- En lugar de details, lo mostramos en una caja especial con viñetas -->
+        <div class="paradox-box">
+            <h3>🌐 Globalización de la "cultura del biberón"</h3>
+            <p>En países subdesarrollados, el uso de fórmula se ve a veces como símbolo de estatus y modernidad, lo que conlleva graves riesgos sanitarios si se prepara inadecuadamente (agua contaminada, dosificación incorrecta).</p>
+            <h3>🍃 Vuelta a lo natural en países ricos</h3>
+            <p>Aumenta la demanda de apoyo (consultoras, grupos de lactancia) y se revaloriza la lactancia prolongada.</p>
+            <h3>📉 Brecha socioeconómica intranacional</h3>
+            <p>En todos los países, las madres con menor nivel educativo y económico tienen tasas más bajas de lactancia y mayor abandono, por barreras similares a las de países pobres: trabajo precario, falta de apoyo, etc.</p>
+        </div>
+
+        <!-- Imagen adicional: contraste norte-sur -->
+
+
+        <h2>📌 Puntos clave comparativos</h2>
+        <ul>
+            <li><strong>🔹 Inicio:</strong> Alto en ambos contextos (>90% sub, >80% des).</li>
+            <li><strong>🔹 Lactancia exclusiva:</strong> Objetivo 50%; rara vez se alcanza. En desarrollo, por mitos y marketing; en desarrollado, por trabajo y medicalización.</li>
+            <li><strong>🔹 Duración:</strong> Prolongada habitual en zonas rurales pobres; corta en países ricos (estigma).</li>
+            <li><strong>🔹 Significado:</strong> En el Sur, cuestión de vida; en el Norte, elección de salud y ecología.</li>
+            <li><strong>🔹 Marketing:</strong> Agresivo y explícito en el Sur; sutil y encubierto en el Norte.</li>
+            <li><strong>🔹 Políticas:</strong> Subsistencias, IHAN y regulación en Sur; licencias y conciliación en Norte.</li>
+        </ul>
+
+        <!-- Caja extra: Gráfico conceptual / comparación rápida -->
+        <div class="concept-box">
+            <h3>🧠 Comparación visual conceptual</h3>
+            <p style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: space-between;">
+                <span style="background: #f4a6b8; padding: 10px 20px; border-radius: 40px; color: #5a1f2a;"><strong>🌍 Subdesarrollado</strong> → Tradición, riesgo, alta natalidad</span>
+                <span style="background: #f7c1cc; padding: 10px 20px; border-radius: 40px; color: #5a1f2a;"><strong>🏙️ Desarrollado</strong> → Conciliación, elección, estigmas</span>
+            </p>
+            <p style="margin-top: 15px;"><span class="icon">🤱</span> La paradoja: quienes más necesitan la lactancia (por falta de agua potable) son quienes más la abandonan prematuramente por presión comercial y falta de apoyo; mientras en el Norte resurge como tendencia de bienestar.</p>
+        </div>
+
+        <!-- Breve conclusión con autores específicos del tema -->
+        <h2>🔍 Conclusión</h2>
+        <p>La lactancia materna es un claro <strong>marcador de desigualdad global</strong>. Mientras en los países subdesarrollados es una intervención de supervivencia infantil frenada por el marketing de multinacionales y la falta de estructuras sanitarias, en los desarrollados se enfrenta a barreras laborales, medicalización y juicios sociales. Las políticas públicas adaptadas a cada realidad —regulación comercial firme en el Sur, licencias prolongadas y formación sanitaria en el Norte— son imprescindibles para que millones de niños y madres puedan ejercer su derecho a amamantar.</p>
+
+    
+
+        <!-- ========== FIN DEL CONTENIDO ESPECÍFICO ========== -->
+    </main>
+
+    <!-- Footer (opcional pero idéntico estilo) -->
+    <footer>
+        <p>© 2025 · Lactancia Materna · 1º DAM · IES Alixar</p>
+    </footer>
+
+</div>
+<!-- FIN MAIN CONTENT -->
+</body>
+</html>

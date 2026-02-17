@@ -1,0 +1,302 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #fdecef;
+    color: #4a2c2a;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+}
+
+/* Menú lateral fijo */
+.side-menu {
+    background-color: #7a1f3d;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    overflow-y: auto;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.menu-header {
+    background-color: #5a1f2a;
+    padding: 25px 20px;
+    color: white;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 101;
+}
+
+.menu-header h2 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.menu-header p {
+    font-size: 0.8em;
+    opacity: 0.9;
+}
+
+.menu-content {
+    padding: 20px 0;
+}
+
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-section-title {
+    color: #f4a6b8;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+    margin-bottom: 10px;
+}
+
+.menu-links {
+    list-style: none;
+}
+
+.menu-links li {
+    margin: 5px 0;
+}
+
+.menu-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.menu-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left-color: #f4a6b8;
+    padding-left: 25px;
+}
+
+.menu-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left-color: #f4a6b8;
+    font-weight: 600;
+}
+
+/* Checkbox hack para menú móvil */
+#menu-toggle {
+    display: none;
+}
+
+.menu-label {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #7a1f3d;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 102;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+    transition: all 0.3s ease;
+}
+
+.menu-label:hover {
+    background-color: #5a1f2a;
+    transform: scale(1.05);
+}
+
+/* Contenido principal */
+.main-content {
+    grid-column: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    width: 100%;
+}
+
+/* Header original */
+header {
+    background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 0 0 15px 15px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    color: #5a1f2a;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+/* Estilos del contenido principal */
+main {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #c94a6a;
+    margin-top: 40px;
+    border-left: 6px solid #f4a6b8;
+    padding-left: 10px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+details {
+    background-color: #fff0f4;
+    border: 1px solid #f4b6c2;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 18px 0;
+}
+
+summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #7a1f3d;
+}
+
+details p {
+    margin-top: 10px;
+}
+
+img {
+    width: 100%;
+    max-width: 450px;
+    display: block;
+    margin: 25px auto;
+    border-radius: 12px;
+}
+
+ul {
+    margin-left: 25px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #7a1f3d;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    margin-top: 40px;
+    border-radius: 12px 12px 0 0;
+}
+
+/* RESPONSIVE - SIN JAVASCRIPT */
+@media (max-width: 992px) {
+    body {
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+    }
+
+    .side-menu {
+        position: fixed;
+        left: -280px;
+        transition: left 0.3s ease;
+        z-index: 100;
+    }
+
+    .menu-label {
+        display: flex;
+    }
+
+    .main-content {
+        grid-column: 1;
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Checkbox hack: cuando el checkbox está checked, muestra el menú */
+    #menu-toggle:checked ~ .side-menu {
+        left: 0;
+    }
+
+    #menu-toggle:checked ~ .menu-label::after {
+        content: "✕";
+    }
+
+    #menu-toggle:checked ~ .main-content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+    }
+
+    /* Ajuste del contenido principal */
+    .main-content {
+        padding-top: 80px;
+    }
+
+    header {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-menu {
+        width: 250px;
+        left: -250px;
+    }
+
+    .menu-label {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    header {
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-menu {
+        width: 100%;
+        left: -100%;
+    }
+
+    #menu-toggle:checked ~ .side-menu {
+        left: 0;
+    }
+}

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TEMA: Pérdida de un lactante - Duelo y lactancia -->
+    <title>Pérdida de un lactante · Lactancia Materna</title>
+
+    <!-- Font Awesome 6 (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== ESTILOS COMPLETOS DE INDEX.HTML ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        /* Header principal */
+        .main-header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2.2em;
+        }
+
+        .main-header p {
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        /* HEADER SECUNDARIO */
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        /* Secciones de contenido */
+        .content-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #c94a6a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.8em;
+        }
+
+        /* Estilos del contenido principal */
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        /* ESTILOS DE ICONOS Y CARDS */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .icon-card {
+            background: linear-gradient(145deg, #fff8fa, #ffeef0);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            flex: 1 1 180px;
+            box-shadow: 0 10px 20px rgba(201, 74, 106, 0.1);
+            border: 1px solid #fad1d8;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-8px);
+            background: #ffe2e8;
+        }
+
+        .icon-card i {
+            font-size: 2.8em;
+            color: #c94a6a;
+            margin-bottom: 15px;
+        }
+
+        .icon-card h3 {
+            color: #7a1f3d;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .icon-card p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        /* Cita destacada - versión más suave para duelo */
+        .quote-box {
+            background: #fae6ea;
+            border-left: 6px solid #c94a6a;
+            padding: 25px 30px;
+            border-radius: 12px 30px 30px 12px;
+            margin: 35px 0;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #5a1f2a;
+            box-shadow: 0 5px 0 rgba(122, 31, 61, 0.05);
+        }
+
+        .quote-box i {
+            color: #c94a6a;
+            margin-right: 10px;
+            font-size: 1.4em;
+        }
+
+        /* Caja de recuerdo / memorial */
+        .memorial-box {
+            background: #fff4f7;
+            border: 2px dashed #c94a6a;
+            padding: 30px;
+            border-radius: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .memorial-box i {
+            font-size: 3em;
+            color: #c94a6a;
+            margin-bottom: 15px;
+        }
+
+        .memorial-box h3 {
+            color: #7a1f3d;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        /* Estilo para details con iconos */
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.15em;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary i {
+            margin-right: 15px;
+            color: #c94a6a;
+            font-size: 1.3em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 4px solid #f4a6b8;
+        }
+
+        /* Imágenes - con borde más suave */
+        img {
+            width: 100%;
+            max-width: 450px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(122, 31, 61, 0.15);
+            border: 3px solid white;
+        }
+
+        /* Listas con iconos */
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            display: flex;
+            align-items: baseline;
+        }
+
+        li i {
+            color: #7a1f3d;
+            margin-right: 12px;
+            font-size: 1.1em;
+            min-width: 20px;
+        }
+
+        li strong {
+            color: #7a1f3d;
+            margin-right: 5px;
+        }
+
+        /* Tabla de opciones */
+        .options-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .options-table th {
+            background-color: #7a1f3d;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .options-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f4b6c2;
+        }
+
+        .options-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .options-table tr:hover td {
+            background-color: #fff4f7;
+        }
+
+        .options-table i {
+            margin-right: 8px;
+        }
+
+        /* Botón de recursos de ayuda */
+        .help-resource {
+            background-color: #e8d9dd;
+            border-radius: 50px;
+            padding: 15px 25px;
+            display: inline-block;
+            margin: 20px 0;
+            color: #5a1f2a;
+            font-weight: 600;
+            border: 2px solid #7a1f3d;
+            transition: all 0.3s;
+        }
+
+        .help-resource:hover {
+            background-color: #7a1f3d;
+            color: white;
+        }
+
+        .help-resource i {
+            margin-right: 10px;
+        }
+
+        /* Autores */
+        .authors {
+            background-color: #fff0f4;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3 {
+            color: #7a1f3d;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+
+            .menu-label {
+                display: flex;
+            }
+
+            .main-content {
+                grid-column: 1;
+                width: 100%;
+                padding: 20px;
+            }
+
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+
+            .main-content {
+                padding-top: 80px;
+            }
+
+            header {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+
+            .menu-label {
+                top: 15px;
+                left: 15px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Checkbox para menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Botón menú móvil -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">
+    ☰
+</label>
+
+<!-- Menú lateral -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+    <header>
+        <h1><i class="fas fa-dove" style="margin-right: 10px;"></i> Pérdida de un lactante: duelo, leche y memoria</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <!-- INTRODUCCIÓN - Enfoque sensible y respetuoso -->
+        <h2 id="introduccion"><i class="fas fa-feather-alt" style="margin-right: 10px;"></i> Un vacío que también duele en el pecho</h2>
+        <p>
+            La pérdida de un bebé durante la lactancia es una de las experiencias más devastadoras que puede atravesar una madre.
+            El duelo perinatal y neonatal no solo afecta emocionalmente, sino que también tiene una dimensión física concreta:
+            el cuerpo sigue produciendo leche para un bebé que ya no está. Esta realidad, a menudo invisible, agrava el sufrimiento
+            y requiere un acompañamiento específico y compasivo.
+        </p>
+        <p>
+            Esta página aborda la intersección entre la pérdida y la lactancia: cómo gestionar la producción de leche,
+            qué opciones existen para la donación, cómo acompañar el duelo y por qué es fundamental que los profesionales
+            de la salud reciban formación en este ámbito. Hablamos de dolor, pero también de memoria, de solidaridad y
+            de transformar la leche en vida para otros bebés.
+        </p>
+
+
+        <!-- CAJA MEMORIAL / DEDICATORIA -->
+        <div class="memorial-box">
+            <i class="fas fa-candle-holder"></i>
+            <h3>Para todas las madres</h3>
+            <p style="font-size: 1.2em; font-style: italic;">"Tu leche no fue en vano. Tu amor tampoco."</p>
+            <p style="margin-top: 15px;">A quienes sostuvieron a sus hijos en brazos y también en el pecho. A quienes donaron su leche como legado. A quienes guardan el recuerdo en cada ciclo de extracción.</p>
+        </div>
+
+        <!-- TARJETAS - REALIDADES DEL DUELO Y LACTANCIA -->
+        <div class="icon-container">
+            <div class="icon-card">
+                <i class="fas fa-tint"></i>
+                <h3>Leche sin bebé</h3>
+                <p>El cuerpo no sabe del duelo; la prolactina sigue actuando.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Dolor físico y emocional</h3>
+                <p>La subida de leche sin vaciado causa ingurgitación y mastitis.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-donate"></i>
+                <h3>Donación</h3>
+                <p>Muchas madres eligen donar su leche en honor a su bebé.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-feather"></i>
+                <h3>Acompañamiento</h3>
+                <p>El respeto, la escucha y el silencio son la mejor medicina.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: EL CUERPO QUE SIGUE PRODUCIENDO -->
+        <h2><i class="fas fa-heartbeat"></i> El cuerpo que no sabe que el bebé se ha ido</h2>
+
+        <details>
+            <summary><i class="fas fa-droplet"></i> La subida de la leche tras la pérdida</summary>
+            <p><strong>Punto clave:</strong> Si el fallecimiento ocurre durante el embarazo avanzado, en el parto o en los primeros días posparto, la subida de la leche se produce igualmente. El mecanismo hormonal es independiente de la presencia del bebé.</p>
+            <p><strong>Impacto:</strong> Entre 2 y 5 días después del parto, las mamas se llenan, se tensan y duelen. Para una madre en duelo, esta llegada de leche es un recordatorio constante y doloroso de que su bebé ya no está.</p>
+            <p><strong>Necesidad:</strong> Informar a las madres de que esto va a ocurrir y ofrecer opciones para manejar la producción sin aumentar el sufrimiento.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-exclamation-triangle"></i> Riesgos físicos: ingurgitación y mastitis</summary>
+            <p><strong>Punto clave:</strong> Si no se extrae leche o el bebé no mama, el pecho se ingurgita. Esto puede derivar en mastitis (infección) si no se maneja adecuadamente.</p>
+            <p><strong>Síntomas:</strong> Pechos duros, calientes, enrojecidos, dolor intenso, fiebre.</p>
+            <p><strong>Prevención:</strong> Extracción suave y manual solo para aliviar la presión, nunca vaciar completamente (eso estimularía más producción). Frío local, antiinflamatorios y repollo (hortaliza) como remedio tradicional eficaz.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-brain"></i> El dilema de la extracción</summary>
+            <p><strong>Punto clave:</strong> ¿Extraerse leche o no? No hay una respuesta única. Depende de cada madre, de sus creencias, de su dolor y de sus planes.</p>
+            <p><strong>Si no se extrae:</strong> La producción disminuirá gradualmente en días/semanas. Puede ser doloroso al principio.</p>
+            <p><strong>Si se extrae:</strong> Se mantiene la producción. Algunas madres necesitan "hacer algo" con su leche, verla, donarla. Es una forma de transformar el dolor en acción.</p>
+        </details>
+
+
+        <!-- SECCIÓN 2: OPCIONES PARA LA LECHE -->
+        <h2><i class="fas fa-hand-holding-heart"></i> ¿Qué hacer con la leche? Opciones respetuosas</h2>
+
+        <details>
+            <summary><i class="fas fa-tint"></i> Secado de la leche de forma gradual</summary>
+            <p><strong>Punto clave:</strong> Para la mayoría de las madres, lo deseable es que la producción cese. Debe hacerse de forma gradual para evitar mastitis y sufrimiento innecesario.</p>
+            <p><strong>Recomendaciones:</strong> Extracciones muy cortas solo para aliviar presión, sujetador firme (no apretado), frío local, infusiones de salvia (efecto antiestrogénico), evitar masajes o estimulación del pezón.</p>
+            <p><strong>Tiempo:</strong> El proceso puede durar de 1 a 3 semanas. Requiere seguimiento profesional.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-donate"></i> Donación de leche materna</summary>
+            <p><strong>Punto clave:</strong> Muchas madres que pierden a sus bebés encuentran un propósito en donar su leche a bancos de leche humana. Es un acto de generosidad que honra la memoria del hijo o hija.</p>
+            <p><strong>Requisitos:</strong> Las madres en duelo pueden donar igual que cualquier otra donante si pasan los análisis clínicos. Los bancos de leche suelen tener protocolos especialmente sensibles para estas madres.</p>
+            <p><strong>Testimonios:</strong> "No pude salvar a mi hija, pero su leche salvó a otros bebés". La donación como parte del proceso de duelo.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-paint-brush"></i> Rituales y despedida</summary>
+            <p><strong>Punto clave:</strong> Algunas madres deciden conservar una pequeña cantidad de leche como objeto de recuerdo. Existen joyería conmemorativa que incorpora leche materna en resina, o simplemente guardar un frasco.</p>
+            <p><strong>Rituales:</strong> Vaciar el pecho por última vez en un lugar simbólico (río, mar, jardín), acompañada de una persona de confianza. El ritual ayuda a cerrar el ciclo.</p>
+            <p><strong>Validación:</strong> No hay formas correctas o incorrectas de despedirse de la leche. Cada madre debe ser libre de elegir.</p>
+        </details>
+
+        <!-- TABLA COMPARATIVA: Opciones frente a la producción -->
+        <h2><i class="fas fa-balance-scale"></i> Opciones para gestionar la producción</h2>
+
+        <table class="options-table">
+            <thead>
+            <tr>
+                <th><i class="fas fa-leaf"></i> Secado progresivo</th>
+                <th><i class="fas fa-heart"></i> Donación a banco de leche</th>
+                <th><i class="fas fa-star"></i> Conservación simbólica</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Indicado si la madre desea que cese la producción</td>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Transforma el dolor en ayuda para otros bebés</td>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Permite conservar un recuerdo físico</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-clock"></i> Proceso de 1-3 semanas</td>
+                <td><i class="fas fa-clock"></i> Requiere extracción regular y análisis</td>
+                <td><i class="fas fa-clock"></i> Pequeñas cantidades, sin presión</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-hand-holding-medical"></i> Apoyo profesional recomendado</td>
+                <td><i class="fas fa-tint"></i> La leche debe ser pasteurizada</td>
+                <td><i class="fas fa-gem"></i> Joyería con leche materna</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-temperature-cold"></i> Frío local, salvia, sujetador</td>
+                <td><i class="fas fa-hospital"></i> Contactar con banco de leche más cercano</td>
+                <td><i class="fas fa-feather"></i> Ritual de despedida</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!-- SECCIÓN 3: ACOMPAÑAMIENTO PROFESIONAL -->
+        <h2><i class="fas fa-hands-helping"></i> El papel de los profesionales de la salud</h2>
+
+        <details>
+            <summary><i class="fas fa-comment-medical"></i> Comunicación y lenguaje</summary>
+            <p><strong>Punto clave:</strong> Las palabras importan. Preguntar "¿Has pensado qué hacer con tu leche?" es muy diferente a "¿Vas a donar la leche?".</p>
+            <p><strong>Recomendación:</strong> Validar el dolor, no minimizarlo. No frases hechas como "ya tendrás otro". Ofrecer opciones sin presionar. Preguntar cómo quiere que llamen a su bebé (por su nombre).</p>
+            <p><strong>Formación:</strong> La mayoría de profesionales no reciben formación específica en duelo perinatal y lactancia. Es necesario implementar protocolos en hospitales.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-users"></i> Grupos de apoyo y otras madres</summary>
+            <p><strong>Punto clave:</strong> El acompañamiento entre pares es invaluable. Organizaciones como "El Parto es Nuestro", "Red Canguro" o grupos locales de duelo perinatal ofrecen espacios de escucha.</p>
+            <p><strong>Testimonios:</strong> Hablar con otra madre que ha pasado por lo mismo, que también tuvo que decidir sobre su leche, reduce el aislamiento.</p>
+            <p><strong>Recursos:</strong> Existen manuales y guías editadas por asociaciones de matronas y psicólogas perinatales.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-shield-virus"></i> Prevención de la salud mental</summary>
+            <p><strong>Punto clave:</strong> El duelo perinatal tiene alto riesgo de complicaciones como depresión, ansiedad, trastorno de estrés postraumático (TEPT) y duelos patológicos.</p>
+            <p><strong>Señales de alarma:</strong> Incapacidad para realizar actividades diarias, aislamiento prolongado, ideación autolítica.</p>
+            <p><strong>Derivación:</strong> Psicología perinatal especializada. No todas las madres necesitan terapia, pero deben tener acceso fácil si lo requieren.</p>
+        </details>
+
+        <!-- LISTA: COSAS QUE AYUDAN (Y COSAS QUE NO) -->
+        <h2><i class="fas fa-check-circle"></i> Acompañamiento respetuoso: qué hacer y qué evitar</h2>
+
+        <ul>
+            <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>SÍ:</strong> Nombrar al bebé por su nombre. Preguntar cómo se siente la madre con su producción de leche.</li>
+            <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>SÍ:</strong> Ofrecer información clara sobre secado, donación y conservación sin presionar.</li>
+            <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>SÍ:</strong> Respetar los silencios. Acompañar con presencia, no con discursos.</li>
+            <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>SÍ:</strong> Facilitar el contacto con bancos de leche si la madre lo solicita.</li>
+            <li><i class="fas fa-times-circle" style="color: #c62828;"></i> <strong>NO:</strong> Decir "no te preocupes, la leche se irá sola". Es cierto, pero minimiza el proceso.</li>
+            <li><i class="fas fa

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TÍTULO ESPECÍFICO: BENEFICIOS PARA LA MADRE -->
+    <title>Lactancia · Beneficios para la madre</title>
+
+    <style>
+        /* ===== ESTILOS COMPLETOS (MISMA BASE) ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        /* Header principal */
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        /* main = fondo blanco */
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        /* Estilos para details/summary */
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.1em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid #f4a6b8;
+        }
+
+        details p:last-child {
+            margin-bottom: 5px;
+        }
+
+        details strong {
+            color: #7a1f3d;
+        }
+
+
+
+        /* Listas */
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        li strong {
+            color: #7a1f3d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Autores y sección extra */
+        .authors, .benefit-highlight, .myth-box, .resources-box {
+            background-color: #fff0f4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3, .benefit-highlight h3, .myth-box h3, .resources-box h3 {
+            color: #7a1f3d;
+            margin-bottom: 10px;
+        }
+
+        /* Tarjetas de beneficios */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.08);
+            border-top: 5px solid #f4a6b8;
+            transition: transform 0.2s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(122, 31, 61, 0.12);
+        }
+
+        .benefit-card h4 {
+            color: #7a1f3d;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .benefit-card p {
+            margin-bottom: 0;
+            color: #4a2c2a;
+        }
+
+        .icon {
+            font-size: 1.3em;
+            margin-right: 5px;
+        }
+
+        hr {
+            margin: 40px 0 20px;
+            border: 1px dashed #f4a6b8;
+        }
+
+        /* Cita destacada */
+        .quote {
+            font-style: italic;
+            padding: 20px 25px;
+            background-color: #fdecef;
+            border-radius: 15px;
+            color: #5a1f2a;
+            font-size: 1.1em;
+            border-bottom: 3px solid #f4a6b8;
+            margin: 30px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+            .menu-label {
+                display: flex;
+            }
+            .main-content {
+                grid-column: 1;
+                width: 100%;
+                padding: 20px;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+            .main-content {
+                padding-top: 80px;
+            }
+            header {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 250px;
+                left: -250px;
+            }
+            .menu-label {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+            main {
+                padding: 20px;
+            }
+            header {
+                padding: 25px 15px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 100%;
+                left: -100%;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Checkbox menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Botón menú móvil -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">☰</label>
+
+<!-- MENÚ LATERAL (exactamente igual, con clase active en la página actual) -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+
+    <header>
+        <h1><i class="fas fa-baby" style="margin-right: 10px;"></i> Beneficios de la lactancia para la madre</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <!-- ========== INICIO DEL CONTENIDO ESPECÍFICO: BENEFICIOS MADRE ========== -->
+
+        <!-- Imagen representativa: madre feliz amamantando -->
+
+
+        <!-- INTRODUCCIÓN -->
+        <p style="font-size: 1.1em; background: #fdecef; padding: 20px; border-radius: 12px;">
+            <span class="icon">✨</span> La lactancia materna no solo es el mejor alimento para el bebé, sino que también
+            <strong>proporciona beneficios profundos y duraderos para la salud física y emocional de la madre</strong>.
+            Lejos del mito de que amamantar "desgasta" a la mujer, la evidencia científica demuestra que es una inversión en su bienestar a corto, medio y largo plazo.
+        </p>
+
+        <!-- SECCIÓN 1: Beneficios físicos inmediatos -->
+        <h2>🫀 1. Beneficios físicos inmediatos</h2>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h4>🤰 Recuperación postparto acelerada</h4>
+                <p>La succión del bebé estimula la liberación de <strong>oxitocina</strong>, que provoca contracciones uterinas (entuertos). Esto reduce el sangrado, acelera la involución uterina y previene hemorragias.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>🩸 Menor pérdida de sangre</h4>
+                <p>Las madres que lactan tienen menos riesgo de hemorragia postparto gracias a la acción de la oxitocina, que comprime los vasos sanguíneos uterinos.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>⚖️ Pérdida de peso más rápida</h4>
+                <p>Amamantar consume entre 300 y 500 kcal al día. Moviliza las reservas de grasa acumuladas durante el embarazo, favoreciendo la recuperación del peso previo.</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>🔄 Ciclo hormonal y bienestar materno</summary>
+            <p><strong>Prolactina:</strong> Genera sensación de calma y relajación durante la toma, reduciendo la ansiedad.</p>
+            <p><strong>Oxitocina:</strong> Refuerza el vínculo madre-hijo y produce bienestar emocional inmediato.</p>
+            <p><strong>Retraso de la fertilidad:</strong> La lactancia exclusiva y a demanda puede actuar como método anticonceptivo natural (MELA) en los primeros 6 meses, siempre que se cumplan criterios estrictos.</p>
+        </details>
+
+        <!-- SECCIÓN 2: Beneficios a largo plazo - prevención de enfermedades -->
+        <h2>🛡️ 2. Protección a largo plazo: menos enfermedades</h2>
+
+        <details>
+            <summary>🎗️ Reducción del riesgo de cáncer</summary>
+            <p><strong>Cáncer de mama:</strong> Por cada 12 meses de lactancia, el riesgo relativo de cáncer de mama disminuye un 4,3%. Las mujeres que lactan más de 12 meses tienen un 26% menos de riesgo. La protección es mayor cuanto más tiempo se amamanta.</p>
+            <p><strong>Cáncer de ovario y endometrio:</strong> La lactancia suprime la ovulación, reduciendo la exposición a estrógenos. Disminuye hasta un 30% el riesgo de cáncer epitelial de ovario.</p>
+        </details>
+
+        <details>
+            <summary>❤️ Salud cardiovascular y metabólica</summary>
+            <p><strong>Diabetes tipo 2:</strong> La lactancia mejora la sensibilidad a la insulina. Mujeres con diabetes gestacional que amamantan reducen drásticamente su riesgo de desarrollar diabetes tipo 2 posterior.</p>
+            <p><strong>Hipertensión e infarto:</strong> Estudios de largo seguimiento (Nurses' Health Study) asocian la lactancia acumulada con menor incidencia de hipertensión, hiperlipidemia e infarto de miocardio.</p>
+            <p><strong>Síndrome metabólico:</strong> Amamantar más de 12 meses a lo largo de la vida se asocia con menor prevalencia de síndrome metabólico tras la menopausia.</p>
+        </details>
+
+        <details>
+            <summary>🦴 Salud ósea y osteoporosis</summary>
+            <p>A corto plazo, la lactancia moviliza calcio óseo, pero se recupera completamente tras el destete. A largo plazo, las mujeres que han lactado tienen <strong>menor riesgo de fractura de cadera postmenopáusica</strong>.</p>
+        </details>
+
+        <!-- SECCIÓN 3: Beneficios emocionales y psicológicos -->
+        <h2>💞 3. Bienestar emocional y vínculo</h2>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h4>🧘 Menor estrés y ansiedad</h4>
+                <p>Los niveles de cortisol se reducen durante la toma. La lactancia promueve la calma y la resiliencia emocional en el puerperio.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>🤝 Fortalecimiento del apego</h4>
+                <p>El contacto piel con piel y la respuesta a las señales del bebé refuerzan el vínculo seguro, con efectos positivos en la autoestima materna.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>🌙 Mejor calidad del sueño</h4>
+                <p>A pesar de los despertares, las madres que amamantan muestran mayor eficiencia del sueño y menor insomnio que aquellas que usan fórmula.</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>⬇️ Reducción del riesgo de depresión postparto</summary>
+            <p>La lactancia no previene automáticamente la depresión, pero las madres que consiguen establecerla suelen presentar <strong>menor sintomatología depresiva</strong>. El apoyo a la lactancia es también apoyo a la salud mental materna.</p>
+            <p><strong>Dato:</strong> Mujeres que deseaban amamantar y no pudieron tienen mayor riesgo de depresión. De ahí la importancia del acompañamiento profesional.</p>
+        </details>
+
+        <!-- Cita emotiva-documentada -->
+        <div class="quote">
+            "Amamantar no es solo alimentar. Es una conversación hormonal entre madre e hijo que la protege a ella también. Cada toma es una dosis de salud futura."
+        </div>
+
+        <!-- SECCIÓN 4: Beneficios sociales y económicos -->
+        <h2>💰 4. Beneficios sociales y económicos</h2>
+
+        <details>
+            <summary>💵 Ahorro económico directo</summary>
+            <p>El coste de la lactancia artificial oscila entre 800 y 1500 € anuales (fórmula, biberones, esterilizadores). La lactancia materna es gratuita y supone un ahorro sustancial para la economía familiar.</p>
+        </details>
+
+        <details>
+            <summary>🏥 Menor absentismo laboral</summary>
+            <p>Los hijos de madres que amamantan se enferman menos. Esto se traduce en menos días de baja por cuidado de hijos y mayor estabilidad laboral.</p>
+        </details>
+
+        <details>
+            <summary>🌱 Beneficio ecológico</summary>
+            <p>La lactancia materna no genera residuos, no consume energía para su producción ni transporte, y no utiliza agua para su preparación. Es el acto de alimentación más sostenible.</p>
+        </details>
+
+        <!-- SECCIÓN 5: Mitos y realidades sobre la madre -->
+        <h2>❓ 5. Mitos y realidades</h2>
+
+        <div class="myth-box">
+            <h3>🧐 Desmontando falsas creencias</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 15px;"><strong style="background: #f4a6b8; padding: 4px 12px; border-radius: 20px;">Mito:</strong> "Amamantar estropea el pecho y lo deja caído".</li>
+                <li style="margin-bottom: 15px;"><strong style="background: #f7c1cc; padding: 4px 12px; border-radius: 20px;">Realidad:</strong> La flacidez mamaria está determinada por la genética, el número de embarazos, la edad y el tabaco. La lactancia en sí misma no es causa de ptosis.</li>
+
+                <li style="margin-bottom: 15px;"><strong style="background: #f4a6b8; padding: 4px 12px; border-radius: 20px;">Mito:</strong> "La madre pierde nutrientes y se queda sin calcio".</li>
+                <li style="margin-bottom: 15px;"><strong style="background: #f7c1cc; padding: 4px 12px; border-radius: 20px;">Realidad:</strong> El organismo moviliza calcio de forma temporal y lo recupera. Las madres lactantes no tienen mayor riesgo de osteoporosis.</li>
+
+                <li style="margin-bottom: 15px;"><strong style="background: #f4a6b8; padding: 4px 12px; border-radius: 20px;">Mito:</strong> "Si el bebé toma mucho pecho es que la leche es mala o no alimenta".</li>
+                <li style="margin-bottom: 15px;"><strong style="background: #f7c1cc; padding: 4px 12px; border-radius: 20px;">Realidad:</strong> La frecuencia de tomas no indica mala calidad, sino que el bebé regula la producción. La leche materna es siempre adecuada.</li>
+            </ul>
+        </div>
+
+        <!-- SECCIÓN 6: Apoyo y recursos para la madre -->
+        <h2>🤝 6. Apoyo y recursos</h2>
+
+        <div class="resources-box">
+            <h3>🛠️ ¿Dónde encontrar ayuda?</h3>
+            <ul>
+                <li><strong>Matronas y asesoras de lactancia:</strong> Profesionales sanitarios capacitados.</li>
+                <li><strong>Grupos de apoyo:</strong> La Liga de la Leche, Asociación Española de Pediatría (web de lactancia).</li>
+                <li><strong>Consultoras IBCLC:</strong> Máxima certificación internacional en lactancia.</li>
+                <li><strong>Aplicaciones móviles:</strong> LactApp, BabyNursing para resolver dudas 24/7.</li>
+            </ul>
+            <p style="margin-top: 15px;">🔗 <strong>Recurso destacado:</strong> "Guía para madres que amamantan" (Ministerio de Sanidad, descarga gratuita).</p>
+        </div>
+
+        <!-- RESUMEN EN PUNTOS CLAVE -->
+        <h2>📌 Resumen: 10 beneficios que la lactancia da a la madre</h2>
+        <ul style="background: #fdecef; padding: 25px 30px; border-radius: 15px; list-style-type: '✓   ';">
+            <li>Menor riesgo de hemorragia postparto.</li>
+            <li>Involución uterina más rápida.</li>
+            <li>Pérdida de peso más eficaz.</li>
+            <li>Reducción del cáncer de mama y ovario.</li>
+            <li>Prevención de diabetes tipo 2 y enfermedades cardiovasculares.</li>
+            <li>Menor incidencia de depresión postparto.</li>
+            <li>Fortalecimiento del vínculo afectivo.</li>
+            <li>Ahorro económico (hasta 1500 €/año).</li>
+            <li>Beneficio ecológico: cero residuos.</li>
+            <li>Empoderamiento y satisfacción personal.</li>
+        </ul>
+
+        <!-- IMAGEN ADICIONAL: madre y bebé en calma -->
+
+
+
+
+        <!-- ========== FIN DEL CONTENIDO ========== -->
+    </main>
+
+
+
+</div>
+<!-- FIN MAIN CONTENT -->
+</body>
+</html>

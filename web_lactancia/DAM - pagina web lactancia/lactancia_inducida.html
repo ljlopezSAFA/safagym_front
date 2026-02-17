@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TEMA: Lactancia inducida (relactancia y adopción) -->
+  <title>Lactancia inducida · Lactancia Materna</title>
+
+  <!-- Font Awesome 6 (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ===== ESTILOS COMPLETOS (los mismos que en las páginas anteriores) ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fdecef;
+      color: #4a2c2a;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+
+    /* Menú lateral fijo */
+    .side-menu {
+      background-color: #7a1f3d;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      overflow-y: auto;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .menu-header {
+      background-color: #5a1f2a;
+      padding: 25px 20px;
+      color: white;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+    }
+
+    .menu-header h2 {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+    }
+
+    .menu-header p {
+      font-size: 0.8em;
+      opacity: 0.9;
+    }
+
+    .menu-content {
+      padding: 20px 0;
+    }
+
+    .menu-section {
+      margin-bottom: 20px;
+    }
+
+    .menu-section-title {
+      color: #f4a6b8;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .menu-links {
+      list-style: none;
+    }
+
+    .menu-links li {
+      margin: 5px 0;
+    }
+
+    .menu-links a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      transition: all 0.2s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .menu-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left-color: #f4a6b8;
+      padding-left: 25px;
+    }
+
+    .menu-links a.active {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-left-color: #f4a6b8;
+      font-weight: 600;
+    }
+
+    /* Checkbox hack para menú móvil */
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-label {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #7a1f3d;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      cursor: pointer;
+      z-index: 102;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .menu-label:hover {
+      background-color: #5a1f2a;
+      transform: scale(1.05);
+    }
+
+    /* Contenido principal */
+    .main-content {
+      grid-column: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+      width: 100%;
+    }
+
+    header {
+      background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #5a1f2a;
+      font-size: 2em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #5a1f2a;
+    }
+
+    main {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #c94a6a;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #f4a6b8;
+      font-size: 1.6em;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #4a2c2a;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .icon-card {
+      background: linear-gradient(145deg, #fff8fa, #ffeef0);
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      flex: 1 1 180px;
+      box-shadow: 0 10px 20px rgba(201, 74, 106, 0.1);
+      border: 1px solid #fad1d8;
+      transition: transform 0.3s ease;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-8px);
+      background: #ffe2e8;
+    }
+
+    .icon-card i {
+      font-size: 2.8em;
+      color: #c94a6a;
+      margin-bottom: 15px;
+    }
+
+    .icon-card h3 {
+      color: #7a1f3d;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .icon-card p {
+      font-size: 0.95em;
+      margin-bottom: 0;
+    }
+
+    .quote-box {
+      background: #fae6ea;
+      border-left: 6px solid #c94a6a;
+      padding: 25px 30px;
+      border-radius: 12px 30px 30px 12px;
+      margin: 35px 0;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #5a1f2a;
+      box-shadow: 0 5px 0 rgba(122, 31, 61, 0.05);
+    }
+
+    .quote-box i {
+      color: #c94a6a;
+      margin-right: 10px;
+      font-size: 1.4em;
+    }
+
+    .memorial-box {
+      background: #fff4f7;
+      border: 2px dashed #c94a6a;
+      padding: 30px;
+      border-radius: 25px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .memorial-box i {
+      font-size: 3em;
+      color: #c94a6a;
+      margin-bottom: 15px;
+    }
+
+    .memorial-box h3 {
+      color: #7a1f3d;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    details {
+      background-color: #fff0f4;
+      border: 1px solid #f4b6c2;
+      border-radius: 12px;
+      padding: 18px 25px;
+      margin: 18px 0;
+      transition: all 0.2s ease;
+    }
+
+    details:hover {
+      background-color: #ffe6ec;
+      border-color: #c94a6a;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: #7a1f3d;
+      font-size: 1.15em;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    summary i {
+      margin-right: 15px;
+      color: #c94a6a;
+      font-size: 1.3em;
+    }
+
+    details p {
+      margin-top: 15px;
+      margin-bottom: 10px;
+      padding-left: 15px;
+      border-left: 4px solid #f4a6b8;
+    }
+
+    img {
+      width: 100%;
+      max-width: 450px;
+      display: block;
+      margin: 30px auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(122, 31, 61, 0.15);
+      border: 3px solid white;
+    }
+
+    ul {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      display: flex;
+      align-items: baseline;
+    }
+
+    li i {
+      color: #7a1f3d;
+      margin-right: 12px;
+      font-size: 1.1em;
+      min-width: 20px;
+    }
+
+    li strong {
+      color: #7a1f3d;
+      margin-right: 5px;
+    }
+
+    .options-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .options-table th {
+      background-color: #7a1f3d;
+      color: white;
+      padding: 15px;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    .options-table td {
+      padding: 15px;
+      border-bottom: 1px solid #f4b6c2;
+    }
+
+    .options-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .options-table tr:hover td {
+      background-color: #fff4f7;
+    }
+
+    .options-table i {
+      margin-right: 8px;
+    }
+
+    .help-resource {
+      background-color: #e8d9dd;
+      border-radius: 50px;
+      padding: 15px 25px;
+      display: inline-block;
+      margin: 20px 0;
+      color: #5a1f2a;
+      font-weight: 600;
+      border: 2px solid #7a1f3d;
+      transition: all 0.3s;
+    }
+
+    .help-resource:hover {
+      background-color: #7a1f3d;
+      color: white;
+    }
+
+    .help-resource i {
+      margin-right: 10px;
+    }
+
+    .authors {
+      background-color: #fff0f4;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 20px;
+      border-left: 5px solid #f4a6b8;
+    }
+
+    .authors h3 {
+      color: #7a1f3d;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background-color: #7a1f3d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-radius: 12px 12px 0 0;
+    }
+
+    @media (max-width: 992px) {
+      body {
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+      }
+      .side-menu {
+        position: fixed;
+        left: -280px;
+        transition: left 0.3s ease;
+      }
+      .menu-label {
+        display: flex;
+      }
+      .main-content {
+        grid-column: 1;
+        padding: 20px;
+      }
+      #menu-toggle:checked ~ .side-menu {
+        left: 0;
+      }
+      #menu-toggle:checked ~ .menu-label::after {
+        content: "✕";
+      }
+      #menu-toggle:checked ~ .main-content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .side-menu { width: 250px; left: -250px; }
+      header h1 { font-size: 1.8em; }
+      h2 { font-size: 1.4em; }
+    }
+    @media (max-width: 480px) {
+      .side-menu { width: 100%; left: -100%; }
+      header h1 { font-size: 1.5em; }
+    }
+  </style>
+</head>
+<body>
+<!-- Checkbox para menú móvil -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Botón menú móvil -->
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">
+  ☰
+</label>
+
+<!-- Menú lateral -->
+<aside class="side-menu">
+  <div class="menu-header">
+    <h2>Lactancia Materna</h2>
+    <p>Temas Relacionados</p>
+  </div>
+
+  <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">Temas de Estudio</h3>
+      <ul class="menu-links">
+        <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+        <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+        <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+        <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+        <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+        <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+        <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+        <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+        <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+        <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+        <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+        <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3 class="menu-section-title">Autores</h3>
+      <ul class="menu-links" style="font-size: 0.85em;">
+        <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+        <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+  <header>
+    <h1><i class="fas fa-leaf" style="margin-right: 10px;"></i> Lactancia inducida: relactancia, adopción y vínculo</h1>
+    <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    <p>Trabajo realizado por Daniel Fernández Merchán, Marlo Jompero Angulo, Juan Escribano Coto, Daniel Morillo Bermúdez en conjunto con el resto de alumnos de 1º de DAM</p>
+  </header>
+
+  <main>
+    <!-- INTRODUCCIÓN -->
+    <h2 id="introduccion"><i class="fas fa-hand-holding-heart" style="margin-right: 10px;"></i> Amamantar sin haber gestado: un acto de amor y ciencia</h2>
+    <p>
+      La lactancia inducida es el proceso mediante el cual una persona que no ha estado embarazada —o que ha pasado un tiempo prolongado sin amamantar— estimula su pecho para producir leche materna. Es una práctica cada vez más conocida gracias a madres adoptivas, familias homoparentales, gestación subrogada o abuelas que cuidan de sus nietos. También aplica a madres biológicas que desean retomar la lactancia tras un destete precoz (relactancia).
+    </p>
+    <p>
+      Lejos de ser un proceso sencillo o inmediato, requiere constancia, información veraz y, sobre todo, acompañamiento profesional y familiar. Esta página explica cómo funciona la lactancia inducida, qué métodos existen, cuáles son sus tasas de éxito y por qué, más allá de la nutrición, representa un poderoso vínculo de apego.
+    </p>
+
+    <!-- IMAGEN 1: Madre adoptiva amamantando con relactador -->
+
+    <!-- CAJA SIMBÓLICA -->
+    <div class="memorial-box">
+      <i class="fas fa-heart"></i>
+      <h3>Lactar es más que parir</h3>
+      <p style="font-size: 1.2em; font-style: italic;">"No importa de dónde venga la leche, importa a dónde llega."</p>
+      <p style="margin-top: 15px;">A todas las madres que construyen familia desde el pecho. A quienes confiaron en su cuerpo para amamantar sin gestar.</p>
+    </div>
+
+    <!-- TARJETAS DE REALIDADES -->
+    <div class="icon-container">
+      <div class="icon-card">
+        <i class="fas fa-flask"></i>
+        <h3>Base hormonal</h3>
+        <p>Estimulación + prolactina. No se necesita embarazo previo.</p>
+      </div>
+      <div class="icon-card">
+        <i class="fas fa-syringe"></i>
+        <h3>Protocolo Newman-Goldfarb</h3>
+        <p>Método con anticonceptivos y fármacos para inducir la lactancia.</p>
+      </div>
+      <div class="icon-card">
+        <i class="fas fa-tint"></i>
+        <h3>Producción variable</h3>
+        <p>Desde gotas hasta lactancia exclusiva. Cada mujer es diferente.</p>
+      </div>
+      <div class="icon-card">
+        <i class="fas fa-people-arrows"></i>
+        <h3>Apego</h3>
+        <p>El pecho como espacio de consuelo, no solo alimento.</p>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 1: ¿CÓMO SE INDUCE LA LACTANCIA? -->
+    <h2><i class="fas fa-flask"></i> Cómo funciona la lactancia inducida</h2>
+
+    <details>
+      <summary><i class="fas fa-dna"></i> Principio fisiológico</summary>
+      <p><strong>Punto clave:</strong> La producción de leche depende principalmente de la prolactina y de la estimulación del pezón y la aréola. No es necesario haber pasado por un embarazo; cualquier persona con tejido mamario sano puede producir leche mediante estimulación regular y, en algunos casos, apoyo hormonal.</p>
+      <p><strong>El papel de la succión:</strong> El vaciado frecuente del pecho (bebé, extractor o manos) es el principal estímulo para mantener y aumentar la producción. La clave es la demanda.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-calendar-alt"></i> Protocolo Newman-Goldfarb</summary>
+      <p><strong>Punto clave:</strong> Es el protocolo más documentado para inducir la lactancia sin embarazo. Combina anticonceptivos orales (para simular las hormonas del embarazo) y fármacos como domperidona (aumenta prolactina), junto con extracción programada.</p>
+      <p><strong>Fases:</strong> 1. Preparación hormonal (semanas 1-8). 2. Estimulación intensiva (extracciones cada 3-4h). 3. Llegada del bebé y succión directa.</p>
+      <p><strong>Prescripción médica:</strong> Es imprescindible seguimiento por ginecólogo o endocrino. No automedicarse.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-hand-sparkles"></i> Inducción no farmacológica</summary>
+      <p><strong>Punto clave:</strong> Algunas mujeres optan por métodos exclusivamente mecánicos: extractor, masajes, succión del bebé (en adopciones progresivas) y plantas galactogogas (alholva, cardo mariano, etc.).</p>
+      <p><strong>Efectividad:</strong> Puede funcionar, pero suele llevar más tiempo y la producción puede ser parcial. Es especialmente útil en relactancia tras un destete reciente.</p>
+      <p><strong>Ventaja:</strong> Sin efectos secundarios de fármacos. Recomendable contar con asesoría de lactancia.</p>
+    </details>
+
+    <!-- IMAGEN 2: Extracción / bomba de lactancia -->
+
+    <!-- SECCIÓN 2: HERRAMIENTAS Y APOYO -->
+    <h2><i class="fas fa-toolbox"></i> Herramientas para la lactancia inducida</h2>
+
+    <details>
+      <summary><i class="fas fa-tint"></i> Sistema de relactación (SNS)</summary>
+      <p><strong>Punto clave:</strong> Es un dispositivo que permite alimentar al bebé en el pecho mientras recibe leche (donada o fórmula) a través de una sonda fina. Estimula el pezón y el bebé asocia pecho = alimento.</p>
+      <p><strong>Uso:</strong> Imprescindible en lactancia inducida cuando aún no hay producción propia. Favorece el enganche y la producción futura.</p>
+      <p><strong>Marcas:</strong> Medela SNS, Lact-Aid, o casero con sonda nasogástrica.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-capsules"></i> Galactogogos y apoyo farmacológico</summary>
+      <p><strong>Punto clave:</strong> La domperidona (Motilium) es el fármaco más utilizado fuera de indicación para aumentar prolactina. También metoclopramida, aunque con más efectos secundarios.</p>
+      <p><strong>Plantas medicinales:</strong> Alholva, cardo mariano, hinojo, albahaca. Evidencia limitada pero amplio uso tradicional.</p>
+      <p><strong>Advertencia:</strong> No todas las mujeres responden igual. Consultar siempre con profesional.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-people-arrows"></i> Apoyo de la pareja y la familia</summary>
+      <p><strong>Punto clave:</strong> La lactancia inducida es un proceso exigente. La pareja o red de apoyo puede encargarse de otras tareas (limpieza, biberones suplementarios, cuidado del bebé mientras la madre se extrae).</p>
+      <p><strong>Implicación:</strong> También pueden participar en el "piel con piel" y en ofrecer el SNS. No se trata solo de producir leche, sino de construir un vínculo de crianza compartida.</p>
+    </details>
+
+    <!-- TABLA DE COMPARACIÓN -->
+    <h2><i class="fas fa-chart-simple"></i> Lactancia inducida vs. Lactancia tras parto</h2>
+    <table class="options-table">
+      <thead>
+      <tr>
+        <th><i class="fas fa-leaf"></i> Lactancia inducida</th>
+        <th><i class="fas fa-heart"></i> Lactancia puerperal</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> No requiere embarazo previo</td>
+        <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Producción hormonal natural</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-clock"></i> Proceso lento (semanas o meses)</td>
+        <td><i class="fas fa-clock"></i> Subida de leche entre 2-5 días</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-droplet"></i> Producción variable (parcial o total)</td>
+        <td><i class="fas fa-droplet"></i> Producción abundante en la mayoría</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-capsules"></i> Posible apoyo farmacológico</td>
+        <td><i class="fas fa-capsules"></i> No precisa fármacos</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-hand-holding-heart"></i> Gran valor simbólico y de apego</td>
+        <td><i class="fas fa-hand-holding-heart"></i> Vínculo esperado biológicamente</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- IMAGEN 3: Pareja de madres con bebé -->
+
+    <!-- SECCIÓN 3: MITOS Y REALIDADES -->
+    <h2><i class="fas fa-question-circle"></i> Mitos frecuentes sobre la lactancia inducida</h2>
+
+    <details>
+      <summary><i class="fas fa-ban"></i> "Solo funciona si has tenido un hijo antes"</summary>
+      <p><strong>Realidad:</strong> Es más fácil si ha habido embarazo previo (relactancia), pero muchas mujeres nulíparas logran producciones completas. El tejido mamario responde a la estimulación independientemente de embarazos anteriores.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-ban"></i> "Si no das el 100% de la leche, no sirve de nada"</summary>
+      <p><strong>Realidad:</strong> Cualquier cantidad de leche materna es beneficiosa. Además, el pecho es mucho más que alimento: es consuelo, calor, regulación emocional y sueño. El bebé no solo busca leche, busca a su madre.</p>
+    </details>
+
+    <details>
+      <summary><i class="fas fa-ban"></i> "Es un proceso antinatural"</summary>
+      <p><strong>Realidad:</strong> La lactancia entre especies y la adopción han existido siempre en la historia humana. La tecnología (extractores, SNS) solo amplía posibilidades. La naturaleza no es binaria: la lactancia es un proceso plástico, adaptable.</p>
+    </details>
+
+    <!-- LISTA: CLAVES PARA EL ÉXITO -->
+    <h2><i class="fas fa-key"></i> Factores que predicen una buena respuesta</h2>
+    <ul>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Estimulación temprana y frecuente:</strong> Mínimo 8-12 veces al día (bebé, extractor o ambas).</li>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Uso correcto del SNS:</strong> Especialmente al principio, para mantener al bebé al pecho.</li>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Apoyo profesional:</strong> Asesora de lactancia con experiencia en inducción.</li>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Paciencia y realismo:</strong> No todas lograrán lactancia exclusiva; toda leche cuenta.</li>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Red de apoyo:</strong> Que descargue de otras tareas y sostenga emocionalmente.</li>
+      <li><i class="fas fa-check-circle" style="color: #2e7d32;"></i> <strong>Confianza en el propio cuerpo:</strong> Creer que es posible ya es un primer paso.</li>
+    </ul>
+
+    <!-- RECURSO DE AYUDA -->
+    <div style="text-align: center;">
+      <a href="#" class="help-resource"><i class="fas fa-hands-helping"></i> Guías de lactancia inducida (ILCA, AELAMA)</a>
+    </div>
+
+    <!-- CONCLUSIÓN -->
+    <h2><i class="fas fa-star"></i> Conclusión: lactancia inducida, lactancia posible</h2>
+    <p>
+      La lactancia inducida ensancha la mirada sobre qué significa amamantar. Nos recuerda que el pecho no es solo un órgano reproductor, sino un espacio de encuentro. Que la leche no es solo un fluido, sino un mensaje de amor y acogida. Y que el deseo de criar puede, con información y apoyo, convertirse en un torrente, aunque al principio solo sean gotas.
+    </p>
+    <p style="font-weight: 600; margin-top: 20px;">
+      Porque toda persona que sostiene a un bebé en su pecho está, de algún modo, pariendo maternidad.
+    </p>
+
+    <!-- IMAGEN DE CIERRE: gota de leche en hoja -->
+
+  </main>
+
+  <footer>
+    <p><i class="fas fa-copyright"></i> Proyecto Lactancia Materna · 1º DAM · 2025</p>
+    <p style="margin-top: 5px;">Información basada en protocolos Newman-Goldfarb, OMS, guías de relactación de UNICEF y asociaciones de apoyo a la lactancia.</p>
+  </footer>
+</div>
+</body>
+</html>

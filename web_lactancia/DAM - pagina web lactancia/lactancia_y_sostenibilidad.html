@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TEMA: Lactancia y sostenibilidad -->
+    <title>Lactancia y sostenibilidad · Lactancia Materna</title>
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===== ESTILOS COMPLETOS ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #fdecef;
+            color: #4a2c2a;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Menú lateral fijo */
+        .side-menu {
+            background-color: #7a1f3d;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .menu-header {
+            background-color: #5a1f2a;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+        }
+
+        .menu-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .menu-header p {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
+        .menu-content {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 20px;
+        }
+
+        .menu-section-title {
+            color: #f4a6b8;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(244, 166, 184, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .menu-links {
+            list-style: none;
+        }
+
+        .menu-links li {
+            margin: 5px 0;
+        }
+
+        .menu-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f4a6b8;
+            padding-left: 25px;
+        }
+
+        .menu-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left-color: #f4a6b8;
+            font-weight: 600;
+        }
+
+        /* Checkbox hack para menú móvil */
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #7a1f3d;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 102;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(122, 31, 61, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-label:hover {
+            background-color: #5a1f2a;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        .main-content {
+            grid-column: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(to right, #f4a6b8, #f7c1cc);
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #5a1f2a;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #5a1f2a;
+        }
+
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #c94a6a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f4a6b8;
+            font-size: 1.6em;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #4a2c2a;
+        }
+
+        /* Tarjetas con iconos */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .icon-card {
+            background: linear-gradient(145deg, #fff8fa, #ffeef0);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            flex: 1 1 180px;
+            box-shadow: 0 10px 20px rgba(201, 74, 106, 0.1);
+            border: 1px solid #fad1d8;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-8px);
+            background: #ffe2e8;
+        }
+
+        .icon-card i {
+            font-size: 2.8em;
+            color: #c94a6a;
+            margin-bottom: 15px;
+        }
+
+        .icon-card h3 {
+            color: #7a1f3d;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .icon-card p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        /* Cita destacada */
+        .quote-box {
+            background: #fae6ea;
+            border-left: 6px solid #c94a6a;
+            padding: 25px 30px;
+            border-radius: 12px 30px 30px 12px;
+            margin: 35px 0;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #5a1f2a;
+            box-shadow: 0 5px 0 rgba(122, 31, 61, 0.05);
+        }
+
+        .quote-box i {
+            color: #c94a6a;
+            margin-right: 10px;
+            font-size: 1.4em;
+        }
+
+        /* Estilo details */
+        details {
+            background-color: #fff0f4;
+            border: 1px solid #f4b6c2;
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        details:hover {
+            background-color: #ffe6ec;
+            border-color: #c94a6a;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #7a1f3d;
+            font-size: 1.15em;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary i {
+            margin-right: 15px;
+            color: #c94a6a;
+            font-size: 1.3em;
+        }
+
+        details p {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 4px solid #f4a6b8;
+        }
+
+        /* Imágenes (TODAS CARGAN – FOTOS REALES) */
+        img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(122, 31, 61, 0.15);
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        /* Listas con iconos */
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            display: flex;
+            align-items: baseline;
+        }
+
+        li i {
+            color: #7a1f3d;
+            margin-right: 12px;
+            font-size: 1.1em;
+            min-width: 20px;
+        }
+
+        li strong {
+            color: #7a1f3d;
+            margin-right: 5px;
+        }
+
+        /* Tabla comparativa */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background-color: #7a1f3d;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f4b6c2;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: #fff4f7;
+        }
+
+        .comparison-table i {
+            margin-right: 8px;
+        }
+
+        /* Autores */
+        .authors {
+            background-color: #fff0f4;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #f4a6b8;
+        }
+
+        .authors h3 {
+            color: #7a1f3d;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #7a1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            body {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+            .side-menu {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+            }
+            .menu-label {
+                display: flex;
+            }
+            .main-content {
+                grid-column: 1;
+                padding: 20px;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            #menu-toggle:checked ~ .menu-label::after {
+                content: "✕";
+            }
+            #menu-toggle:checked ~ .main-content::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 99;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .side-menu { width: 250px; left: -250px; }
+            header h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+        @media (max-width: 480px) {
+            .side-menu { width: 100%; left: -100%; }
+            header h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="menu-label" aria-label="Abrir menú">☰</label>
+
+<!-- Menú lateral -->
+<aside class="side-menu">
+    <div class="menu-header">
+        <h2>Lactancia Materna</h2>
+        <p>Temas Relacionados</p>
+    </div>
+    <div class="menu-content">
+    <div class="menu-section">
+      <h3 class="menu-section-title">Navegación Principal</h3>
+      <ul class="menu-links">
+        <li><a href="index.html">Página Principal</a></li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+            <h3 class="menu-section-title">Temas de Estudio</h3>
+            <ul class="menu-links">
+                <li><a href="prejuicios.html">Prejuicios y Mitos</a></li>
+                <li><a href="lactancia_y_sostenibilidad.html">Lactancia y sostenibilidad</a></li>
+                <li><a href="beneficios_lactante.html">Beneficios para el lactante</a></li>
+                <li><a href="beneficios_madre.html">Beneficios para la madre</a></li>
+                <li><a href="desarrollo_lactante.html">Desarrollo del lactante</a></li>
+                <li><a href="antropologia_e_historia.html">Antropología e Historia</a></li>
+                <li><a href="prejuicios.html">Prejuicios y mitos</a></li>
+                <li><a href="paises_desarrollados_vs_subdesarrollados.html">Países desarrollados vs subdesarrollados</a></li>
+                <li><a href="lactancia_inducida.html">Lactancia inducida</a></li>
+                <li><a href="bancos_leche.html">Bancos de leche materna</a></li>
+                <li><a href="pecho_como_envase.html">El pecho como envase</a></li>
+                <li><a href="perdida_lactante.html">Pérdida de un lactante</a></li>
+            </ul>
+      </div>
+        <div class="menu-section">
+            <h3 class="menu-section-title">Autores</h3>
+            <ul class="menu-links" style="font-size: 0.85em;">
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Fernández Merchán</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Juan Escribano Coto</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Daniel Morillo Bermúdez</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">Marlo Juhani Jompero Angulo</li>
+                <li style="color: #f4a6b8; padding: 8px 20px;">1º DAM - Desarrollo de Aplicaciones Multiplataforma</li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-content">
+    <header>
+        <h1><i class="fas fa-globe-americas" style="margin-right: 10px;"></i> Lactancia y sostenibilidad</h1>
+        <p>Daniel Fernández Merchán · Juan Escribano Coto · Daniel Morillo Bermúdez · Marlo Juhani Jompero Angulo</p>
+        <p>1º Desarrollo de Aplicaciones Multiplataforma</p>
+    </header>
+
+    <main>
+        <!-- INTRO con foto de naturaleza y bebé (carga real) -->
+        <h2 id="introduccion"><i class="fas fa-leaf" style="margin-right: 10px;"></i> El alimento más ecológico del planeta</h2>
+
+        <p>
+            La lactancia materna no solo es la mejor opción para la salud del bebé y la madre, sino también para la salud del planeta.
+            Es un sistema de alimentación renovable, ecológico, sin residuos y con una huella de carbono prácticamente nula.
+            Mientras que la industria de la fórmula infantil genera millones de toneladas de emisiones, plásticos y consumo de agua,
+            la leche materna se produce y se entrega directamente, sin transporte, sin envases y sin publicidad.
+        </p>
+
+        <!-- CITA -->
+        <div class="quote-box">
+            <i class="fas fa-quote-left"></i>
+            Amamantar es el primer acto de consumo responsable. No genera basura, no contamina y está disponible 24/7.
+            <i class="fas fa-quote-right" style="float: right;"></i>
+        </div>
+
+        <!-- TARJETAS con datos clave -->
+        <div class="icon-container">
+            <div class="icon-card">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Huella de carbono</h3>
+                <p>4 kg CO₂ por kg de fórmula vs. 0 kg de leche materna.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-water"></i>
+                <h3>Consumo de agua</h3>
+                <p>4.700 L de agua por kg de fórmula; la leche materna no necesita agua.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-trash-alt"></i>
+                <h3>Residuos</h3>
+                <p>550 millones de latas y 86.000 toneladas de plástico al año solo en EE.UU.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-truck"></i>
+                <h3>Transporte</h3>
+                <p>Cadenas globales de distribución vs. producción local en el pecho.</p>
+            </div>
+        </div>
+
+        <!-- IMAGEN 2: Contaminación por plásticos (biberones, latas) -->
+
+
+        <!-- SECCIÓN 1: IMPACTO AMBIENTAL DE LA FÓRMULA -->
+        <h2><i class="fas fa-industry"></i> El coste oculto de la alimentación artificial</h2>
+
+        <details>
+            <summary><i class="fas fa-cow"></i> Producción ganadera y deforestación</summary>
+            <p><strong>Punto clave:</strong> La mayoría de las fórmulas infantiles tienen base de leche de vaca. La ganadería industrial es responsable del 14% de las emisiones mundiales de gases de efecto invernadero.</p>
+            <p><strong>Impacto:</strong> Para producir 1 kg de fórmula se necesitan aproximadamente 10 kg de leche de vaca, lo que implica pastos, piensos (soja) y deforestación en Amazonía.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-tint"></i> Consumo de agua</summary>
+            <p><strong>Punto clave:</strong> La huella hídrica de la fórmula infantil es inmensa. Se necesitan 4.700 litros de agua para producir 1 kg de polvo de fórmula (agua para las vacas, riego de piensos, procesado industrial).</p>
+            <p><strong>Comparación:</strong> Una familia que alimenta con fórmula durante 6 meses consume indirectamente el equivalente a 15 duchas diarias.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-battery-full"></i> Energía y materiales</summary>
+            <p><strong>Punto clave:</strong> Fabricar latas de aluminio, plástico y papel, etiquetas, tapas y embalajes requiere grandes cantidades de energía y recursos no renovables.</p>
+            <p><strong>Residuos:</strong> Solo en Estados Unidos se generan 550 millones de latas vacías al año, suficientes para llenar 1.200 piscinas olímpicas.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-ship"></i> Transporte global</summary>
+            <p><strong>Punto clave:</strong> La fórmula se produce en grandes fábricas (generalmente en Europa, EE.UU., México) y se distribuye a todo el mundo en barcos, aviones y camiones.</p>
+            <p><strong>CO₂:</strong> Cada kilogramo de fórmula genera unos 4 kg de CO₂ solo en transporte y producción.</p>
+        </details>
+
+        <!-- IMAGEN 3: Bosque / naturaleza / sostenibilidad -->
+
+
+        <!-- SECCIÓN 2: LACTANCIA COMO SISTEMA SOSTENIBLE -->
+        <h2><i class="fas fa-recycle"></i> Lactancia materna: economía circular desde el origen</h2>
+
+        <details>
+            <summary><i class="fas fa-biohazard"></i> Cero residuos</summary>
+            <p><strong>Punto clave:</strong> La leche materna se produce en el momento, no necesita envasado, ni transporte, ni refrigeración. No genera basura.</p>
+            <p><strong>Dato:</strong> Un bebé alimentado con fórmula consume de media 400 latas al año, que acaban en vertederos o incineradoras.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-hand-holding-water"></i> Agua cero</summary>
+            <p><strong>Punto clave:</strong> La leche materna contiene un 87% de agua, perfectamente esterilizada y a la temperatura ideal. No requiere hervir agua, enfriar, ni medir.</p>
+            <p><strong>Ahorro:</strong> En regiones sin acceso a agua potable, la lactancia reduce drásticamente la mortalidad infantil y la contaminación por quema de combustibles para hervir agua.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-solar-panel"></i> Energía renovable (cuerpo humano)</summary>
+            <p><strong>Punto clave:</strong> La producción de leche funciona con la energía de los alimentos que consume la madre. Es energía solar transformada.</p>
+            <p><strong>Eficiencia:</strong> El cuerpo humano convierte el excedente calórico en leche con una eficiencia asombrosa, sin necesidad de fábricas ni combustibles fósiles.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-tree"></i> Preservación de recursos</summary>
+            <p><strong>Punto clave:</strong> Amamantar no requiere talar árboles para pastos, ni cultivar soja transgénica, ni explotar minerales para latas.</p>
+            <p><strong>Biodiversidad:</strong> La lactancia es una aliada silenciosa en la conservación de los ecosistemas.</p>
+        </details>
+
+        <!-- TABLA COMPARATIVA IMPACTO AMBIENTAL -->
+        <h2><i class="fas fa-balance-scale"></i> Comparativa ambiental: lactancia vs fórmula</h2>
+        <table class="comparison-table">
+            <thead>
+            <tr>
+                <th><i class="fas fa-heart"></i> Lactancia materna</th>
+                <th><i class="fas fa-industry"></i> Alimentación con fórmula</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Huella de carbono: 0 kg CO₂</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> 4 kg CO₂ por kg de fórmula</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Consumo de agua: 0 litros</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> 4.700 litros por kg</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Residuos sólidos: 0</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Latas, plásticos, tetinas, cajas</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Transporte: 0 km</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Cadenas globales de distribución</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-check-circle" style="color: #2e7d32;"></i> Energía: renovable (alimentación materna)</td>
+                <td><i class="fas fa-times-circle" style="color: #c62828;"></i> Combustibles fósiles, electricidad</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- IMAGEN 4: Madre amamantando en la naturaleza (paisaje) -->
+
+
+        <!-- SECCIÓN 3: LACTANCIA, CAMBIO CLIMÁTICO Y JUSTICIA SOCIAL -->
+        <h2><i class="fas fa-globe-asia"></i> Cambio climático y equidad</h2>
+
+        <details>
+            <summary><i class="fas fa-temperature-high"></i> Lactancia en la crisis climática</summary>
+            <p><strong>Punto clave:</strong> La fórmula infantil depende de cadenas de suministro frágiles. Sequías, incendios o guerras pueden interrumpir su producción y distribución. La leche materna es local y resistente.</p>
+            <p><strong>Refugiados:</strong> En campos de refugiados, la lactancia salva vidas porque no necesita infraestructura. Promoverla es una medida de adaptación climática.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-hand-holding-usd"></i> El negocio de la fórmula</summary>
+            <p><strong>Punto clave:</strong> La industria de la fórmula infantil mueve 55.000 millones de dólares al año. Su marketing agresivo socava la lactancia y externaliza los costes ambientales a la sociedad.</p>
+            <p><strong>Código de Sucedáneos:</strong> A pesar de estar prohibido, muchas empresas regalan muestras en hospitales, incumpliendo la normativa internacional.</p>
+        </details>
+
+        <details>
+            <summary><i class="fas fa-female"></i> Ecofeminismo y lactancia</summary>
+            <p><strong>Punto clave:</strong> La lactancia visibiliza el trabajo de cuidado no remunerado y su valor ecológico. Reconocerla como servicio ambiental es una reivindicación ecofeminista.</p>
+            <p><strong>Propuesta:</strong> Algunas autoras proponen compensar económicamente a las madres que amamantan por el ahorro en emisiones y residuos.</p>
+        </details>
+
+        <!-- LISTA DE ACCIONES SOSTENIBLES -->
+        <h2><i class="fas fa-clipboard-check"></i> 7 formas en que la lactancia cuida el planeta</h2>
+        <ul>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Cero residuos:</strong> No genera latas, tapas, etiquetas ni plásticos de un solo uso.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Ahorro de agua:</strong> No necesita hervir, ni enfriar, ni lavar biberones.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Sin emisiones:</strong> No hay fábricas, ni camiones, ni barcos contaminando.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Protege la biodiversidad:</strong> No deforesta para criar ganado ni cultivar soja.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Alimento justo:</strong> No depende de explotación laboral en países pobres.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Resiliencia climática:</strong> Disponible en catástrofes y cortes de suministro.</li>
+            <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>Educación sostenible:</strong> Normalizar la lactancia reduce la demanda de productos innecesarios.</li>
+        </ul>
+
+        <!-- IMAGEN 5: Planeta Tierra / manos sosteniendo mundo -->
+
+
+        <!-- CONCLUSIÓN -->
+        <h2><i class="fas fa-star"></i> Lactancia: la dieta flexitariana que ya practicamos</h2>
+        <p>
+            Si la lactancia materna fuera un país, sería el tercer mayor ahorrador de emisiones del planeta.
+            Sin embargo, sigue siendo invisible en las políticas de cambio climático. Apoyar la lactancia es
+            apoyar la sostenibilidad: menos plásticos, menos CO₂, menos agua derrochada y más justicia social.
+        </p>
+        <p style="font-weight: 600; margin-top: 20px;">
+            Cada toma es un gesto por el planeta. El pecho es el primer y mejor envase reutilizable.
+        </p>
+
+    </main>
+
+    
+
+    <footer>
+        <p><i class="fas fa-copyright"></i> Proyecto Lactancia Materna · 1º DAM · 2025</p>
+        <p style="margin-top: 5px;">Imágenes: Pexels · Licencia gratuita</p>
+    </footer>
+</div>
+</body>
+</html>
